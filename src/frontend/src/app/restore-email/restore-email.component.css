@@ -41,6 +41,7 @@ img{
     display: flex;
     justify-content: center;
     text-decoration: none;
+    color: #000000;
 }
 
 .drop_password{ font-size: 28px;}
