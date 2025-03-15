@@ -28,18 +28,6 @@ export class ShareService {
     }
   }
 
-  // private loadBlogsArch() {
-  //   this.blogsCache = [];
-  //   for (let i = 0; i < localStorage.length; i++) {
-  //     const key = localStorage.key(i);
-  //     if (key && key.startsWith(this.storageKey)) {
-  //       const blog = JSON.parse(localStorage.getItem(key) || '{}');
-  //       this.blogsCache.push(blog);
-  //       console.log(this.blogsCache);
-  //     }
-  //   }
-  // }
-
   setBlogData(title: string, content: string) {
     if (!title.trim() || !content.trim()) {
       console.log('Не можна додавати блог з порожніми полями');
@@ -64,10 +52,5 @@ export class ShareService {
 
     return this.MainblogsCache;
   }
-
-  // AllUsers(){
-  //   this.http.get<any[]>('http://localhost:8080/api/users').subscribe(
-  //     data =>{this.Users = data.map( user => {  return user;});}, error =>{   console.error('Error fetching shelters:', error);});
-  // }
 
 }

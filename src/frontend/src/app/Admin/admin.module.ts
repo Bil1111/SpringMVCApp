@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {StatisticsComponent} from './statistics/statistics.component';
 // import { ShareService } from '../service/share.service';
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     WardComponent,
     BlogComponent,
     TabelAnimalsComponent,
-    
+    StatisticsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule,],
     // providers: [ShareService],
-  
+
 })
 export class AdminModule { }

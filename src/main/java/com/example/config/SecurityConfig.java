@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableWebSecurity
@@ -19,15 +20,21 @@ public class SecurityConfig {
     private JwtTokenFilter jwtTokenFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler) throws Exception {
         http
-                .csrf().disable()  // Вимкнення CSRF для REST API
+                .csrf().disable() // Вимкнути CSRF для REST API
                 .authorizeRequests()
-                .anyRequest().permitAll()  // Дозволяємо доступ до всіх запитів
+                .requestMatchers("/", "/login**", "/error", "/register").permitAll() // Публічні сторінки
+                // .anyRequest().authenticated() // Інші запити вимагають авторизації
                 .and()
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);  // Додаємо JWT фільтр
+                .oauth2Login()
+                .successHandler(oAuth2LoginSuccessHandler) // Використовуємо кастомний хендлер
+                .and()
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class); // Додаємо JWT-фільтр
+
         return http.build();
     }
+
 
     // Оголошення PasswordEncoder
     @Bean

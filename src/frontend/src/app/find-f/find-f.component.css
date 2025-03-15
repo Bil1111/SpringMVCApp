@@ -390,11 +390,11 @@ button:hover{
   .sidebar { max-width: 100%;max-height: 320px; }
   .close-button1{height: 45px; width: 45px; position: absolute; right: 5px; top: 0px;}
   .adopt-content h1{line-height: 1.0cm;}
-  .adopt-content{ height: 95%; width: 95%; overflow-x:scroll;}
+  .adopt-content{ height: 77%; width: 95%; overflow-x:scroll;}
   .adopt{display: flex;flex-direction: column;}
 
   .close-button2{height: 45px; width: 45px; position: absolute; right: -10px; top: -10px;}
-  .ward-content{ height: 95%; width: 95%; overflow-x:scroll; }
+  .ward-content{ height: 77%; width: 95%; overflow-x:scroll; }
   .ward-content h1{line-height: 1.0cm;   }
   .ward{ display: flex; flex-direction: column;}
 }

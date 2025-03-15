@@ -80,32 +80,4 @@ export class SingINComponent implements OnInit {
 
 
   }
-
-  // logout() {
-  //   // Remove token from localStorage on logout
-  //   localStorage.removeItem('token');
-  //   this.sharedService.changeLoginState(false);
-  //   //this.isLoggedIn = false; // Set isLoggedIn to false on logout
-  // }
-
-  // Метод для відправки даних входу
-  // login() {
-  //   const loginData = {
-  //     email: this.email,
-  //     password: this.password
-  //   };
-  //
-  //   this.http.post('http://localhost:8080/api/users/login', loginData)
-  //     .subscribe({
-  //       next: (response) => {
-  //         console.log('Вхід успішний', response);
-  //         this.router.navigate(['/about']); // Перенаправлення після успішного входу
-  //         window.location.reload;
-  //       },
-  //       error: (error) => {
-  //         this.errorMessage = 'Вхід не вдався';
-  //         console.error('Вхід не вдався', error);
-  //       }
-  //     });
-  // }
 }

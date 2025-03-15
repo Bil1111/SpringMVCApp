@@ -10,7 +10,7 @@ import { DaltonizmService } from '../daltonizm.service';
 
 @Component({
   selector: 'app-regest',
-  
+
   templateUrl: './regest.component.html',
   styleUrls: ['./regest.component.css']
 })
@@ -46,7 +46,7 @@ export class RegestComponent  implements OnInit {
   constructor(private http: HttpClient, private router: Router, private daltonizmService : DaltonizmService) {}
 
  ngOnInit(): void {
-      this.daltonizmService.selectedClass$.subscribe(selectedClass =>{ 
+      this.daltonizmService.selectedClass$.subscribe(selectedClass =>{
           this.selectedClass = selectedClass;
       });
   }
@@ -63,9 +63,6 @@ export class RegestComponent  implements OnInit {
     // }
 
     const registrationData = {
-      // email: this.email,
-      // password: this.password
-      
       firstName: this.Name_user,
       lastName: this.Surname_user,
       email: this.Email_user,
