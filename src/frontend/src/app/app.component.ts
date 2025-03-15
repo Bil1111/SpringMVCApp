@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   public isLogged: boolean = false;
   ShowFooter: boolean = false;
   ShowHeader: boolean = true;
-
+  Show_x: boolean = false;
   fact: string = '';
   chatDuckDuckgo: boolean = false;
   userInput: string = '';
@@ -87,6 +87,8 @@ export class AppComponent implements OnInit {
         position: {lat: point.latitude, lng: point.longitude}, // Використовуємо latitude та longitude
         map: map,
         title: point.name,
+       
+        
       });
 
       // Створення інфо-вікна для мітки
@@ -99,12 +101,12 @@ export class AppComponent implements OnInit {
           border-radius: 10px;
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
 
-            <img src="${point.imageURL}" alt="${point.name}" style="width:100%; height:auto; object-fit: cover; border-radius: 5px; ">
-           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;  text-decoration: none;  display: flex;  justify-content: start; font-family: 'e-ukrB'; color: black; ">${point.name}</a>
-            <p style=" margin-top: 10px; font-size: 1.1rem"  font-family: 'e-ukr'>  <strong>Місто:</strong> ${point.city}</p>
-            <p style="font-size: 1.1rem" font-family: 'e-ukr' ><strong>Адреса:</strong> ${point.address}</p>
-            <p style="font-size: 1.1rem"  font-family: 'e-ukr'><strong>Телефон:</strong> ${point.contactNumber}</p>
-            <p style="font-size: 1.1rem"  font-family: 'e-ukrB';><strong>Опис:</strong> ${point.description}</p>
+            <img src="${point.imageURL}" alt="${point.name}" style="   width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; ">
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.0em;  text-decoration: none;  display: flex;  justify-content: start; font-family: 'e-ukrB'; color: black; ">${point.name}</a>
+            <p style=" margin-top: 10px; font-size: 1.1rem;  font-family: 'e-ukrR'; " >  <strong style="font-family: 'e-ukr';">Місто:</strong> ${point.city}</p>
+            <p style="font-size: 1.1rem; font-family: 'e-ukrR';"  ><strong style="font-family: 'e-ukr';">Адреса:</strong> ${point.address}</p>
+            <p style="font-size: 1.1rem; font-family: 'e-ukrR';"  ><strong style="font-family: 'e-ukr';">Телефон:</strong> ${point.contactNumber}</p>
+            <p style=" font-size: 1.1rem;  font-family: 'e-ukr';"  ><strong>Опис:</strong> ${point.description}</p>
 
           </div>
         `,
@@ -146,9 +148,13 @@ export class AppComponent implements OnInit {
   show_chat() {
     this.chatDuckDuckgo = !this.chatDuckDuckgo;
   }
+  close_chat(){
+    this.chatDuckDuckgo = false;
+  }
 
   search() {
     console.log('Запит на пошук:', this.userInput);  // Лог для початку пошуку
+    setTimeout(() =>{this.Show_x = true}, 500);
     this.http.get<any>(`http://localhost:8080/duckduckgo/search?query=${this.userInput}`).subscribe(
       response => {
         console.log('Отримана відповідь:', response);  // Лог для відповіді

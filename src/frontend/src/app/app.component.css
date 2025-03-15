@@ -99,7 +99,7 @@ nav ul li .Registr_pc:hover {
 .LinkIcon {
   position: absolute;
   top: 0vw;
-  left: 12vw;
+  left: 4vw;
   z-index: 3;
 }
 
@@ -268,7 +268,6 @@ nav ul li .Registr_pc:hover {
 .img{
   width: 120px;
   height: 120px;
-
 }
 
 .imgPhone{
@@ -550,12 +549,14 @@ font-family: 'e-ukrB';
   width: 65%;
   margin-top: 10px;
   margin-bottom: 10px;
+  animation: slideIn 0.3s ease-in-out forwards;
 }
 .fact{
   display: flex;
   gap: 10px;
+  
 }
-.fact .fact_text{ font-family: 'e-ukrB'; font-size: 16px;}
+.fact .fact_text{ font-family: 'e-ukrB'; font-size: 16px; }
 .fact_button{
   border: none;
   background-color: white;
@@ -576,11 +577,7 @@ font-family: 'e-ukrB';
   border: none;
   background-color: #fc8f00;
   border-radius: 10px;
-  /* padding: 15px; */
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 15px 10px 15px;
   z-index: 1000;
   opacity: 0.7;
 }
@@ -588,10 +585,13 @@ font-family: 'e-ukrB';
   opacity: 1;
   transition: 0.27s ease-in-out;
 }
-
+.input_UX{
+  display: flex;
+  gap: 50px;
+}
 .chat-container {
   position: fixed;
-  bottom: 70px;  
+  bottom: 85px;  
   right: 100px;  
   background-color: white;
   border-radius: 10px;
@@ -599,7 +599,7 @@ font-family: 'e-ukrB';
   width: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1001;
-  
+  animation: slideIn 0.3s ease-in-out forwards;
 }
 .duck_search{
   border: none;
@@ -632,4 +632,20 @@ font-family: 'e-ukrB';
 
 .chat-message p {
   margin: 0;
+  animation: slideIn 0.4s ease-in-out forwards;
 } 
+
+.close_search{
+  position: fixed;
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 285px;
+  z-index: 1000;
+}
+.close_search:hover{
+  color: red;
+  transition: 0.27s ease-in-out;
+}
+@keyframes slideIn{
+  from{ opacity: 0; transform: translateY(20px);} to{ opacity: 1; transform: translateY(0);}
+}

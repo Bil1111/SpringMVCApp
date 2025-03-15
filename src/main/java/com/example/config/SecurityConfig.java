@@ -19,6 +19,7 @@ public class SecurityConfig {
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
 
+    @SuppressWarnings({ "deprecation", "removal" })
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler) throws Exception {
         http

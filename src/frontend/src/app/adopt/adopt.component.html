@@ -20,7 +20,7 @@
          <input type="email" id="email" [(ngModel)]="email"  name="email" placeholder="Введіть ваш email" required>
 
          <label for="phone">Телефон:</label>
-         <input type="number" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required>
+         <input type="tel" id="phone" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Введіть ваш номер телефону" required  pattern="^[+]*[0-9]{1,3}[ -]?[0-9]{1,4}[ -]?[0-9]{1,4}[ -]?[0-9]{1,4}$">
 
          <input type="hidden"  [(ngModel)]="animalAge"  name="animalAge">
          <input type="hidden"  [(ngModel)]="animalSex"  name="animalSex">

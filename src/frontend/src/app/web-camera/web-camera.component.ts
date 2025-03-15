@@ -41,5 +41,6 @@ export class WebcamComponent implements OnInit {
   startYouTubeStream() {
     this.stopCamera();
     this.isYouTubeStream = true;
+    
   }
 }

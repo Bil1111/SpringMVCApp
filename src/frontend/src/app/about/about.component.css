@@ -324,21 +324,25 @@ margin-top: 100px;
 .Dev{
   display: flex;
   margin-top:1cm;
-  margin: auto 50px;
+  /* margin: auto 50px; */
 
+}
+.devtitle {
+  text-align: center;
 }
 .devtitle h1{
   font-family: 'e-ukrB';
   font-size: 36px;
   margin-top: 7cm;
   margin-bottom: 40px;
+  /* 
   position: relative;
-  left: 385px;
+  left: 385px; */
   /* margin-left: 200px; */
 }
 .Dev1{
   /* margin-right: 870px; */
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .name{
   /* margin-top: 10px; */
@@ -440,7 +444,7 @@ margin-top: 100px;
   .Dev{
    flex-wrap: wrap;
    display: flex;
-   justify-content: center;
+   /* justify-content: center; */
 
   }
 }

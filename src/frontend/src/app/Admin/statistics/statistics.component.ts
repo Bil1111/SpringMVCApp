@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Chart from 'chart.js/auto';
+import {Chart} from 'chart.js/auto';
 
 @Component({
   selector: 'app-statistics',
