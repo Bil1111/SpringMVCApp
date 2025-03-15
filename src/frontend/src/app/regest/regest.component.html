@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="form-container">
     <h2>Реєстрація</h2>
     <form (ngSubmit)="register()" class="registration-form">
@@ -23,4 +23,71 @@
 
     <p class="login-link">Вже маєте акаунт? <a routerLink="/sing-in">Увійти</a></p>
   </div>
-</div>
+</div> -->
+
+<body>
+  <div class="d-flex justify-content-center align-content-center my-5  conteiner_form">
+     <div class="shadow p-4 form">
+         <form (ngSubmit)="register()" class="registration-form">
+ 
+          <div class="d-flex justify-content-center mb-2"><img class=" Logo_in_forms" src="/Logo.svg" alt=""></div>
+          <div class="d-flex justify-content-center">         <p class="text">Вітаємо в Find a Freand </p>         </div>
+ 
+          <div class="d-grid justify-content-center align-content-center" >
+               <div>
+          <label  for="name">Ім'я</label>
+          <input type="text" required  id="name" [(ngModel)]="Name_user" name="name" [ngClass]="selectedClass">
+          </div>
+ 
+          <div>
+          <label for="surname">Прізвище</label>
+          <input type="text" required  id="surname" [(ngModel)]="Surname_user"  name="surname" [ngClass]="selectedClass">
+          </div>
+ 
+          <div>
+          <label for="email">Пошта</label>
+          <input type="email" required id="email"  [(ngModel)]="Email_user"  name="email" [ngClass]="selectedClass">
+          </div>
+ 
+          <div>
+          <label for="phone">Номер телефону</label>
+          <input type="text" required  id="phone"  [(ngModel)]="Phone_user"  name="phone" [ngClass]="selectedClass">
+          </div>
+ 
+          <div>
+          <label for="login">Логін</label>
+          <input type="text" required  id="login"  [(ngModel)]="Login_user"  name="login" [ngClass]="selectedClass">
+          </div>
+ 
+          <div >
+          <label for="password">Пароль</label>
+          <div class="input_wrapper">
+         <input [type]="passwordVisible? 'text' : 'password' "
+           required  id="password"  [(ngModel)]="Password_user" name="password"  [ngClass]="selectedClass">
+ 
+           <button type="button" (click)="togglePasswordVisibility()" class="toggle_button">
+             <span *ngIf="passwordVisible"><img rel="preload" src="Eye.png" alt="Видно" class="eye1"></span>
+             <span *ngIf="!passwordVisible"><img  rel="preload"src="Eye action2.png" alt="Невидно" class="eye2"></span>
+           </button>
+          </div>
+          </div>
+ 
+          <div class="contunium" >
+              <button class="mt-3 px-5 py-1 bc" [ngClass]="selectedClass">Продовжити</button>
+              <p class="d-flex justify-content-center mb-0">або</p>
+            <button type="button" class="google-button" (click)="Register_with_Google()">
+                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="Google_logo">
+                 Продовжити з Google
+            </button>
+          </div>
+ 
+          </div>
+ 
+          <div *ngIf="errorMessage" class="error" [ngClass]="selectedClass">{{ errorMessage }}</div>
+          <p class="d-flex justify-content-center Do_you_have_account">Вже маєте аканут?<a href="sing-in" >Увійти</a></p>
+ 
+ 
+      </form>
+      </div>
+ </div>
+ </body>

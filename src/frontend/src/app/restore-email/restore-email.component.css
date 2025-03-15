@@ -1,0 +1,74 @@
+body{box-sizing: border-box; font-family: 'e-ukr';}
+
+img{
+    width: 56px;
+    height: 56px;
+}
+.form{
+    border-radius: 15px;
+    width: 450px;
+}
+.form .list_a{
+    display: flex;
+    align-items: center; 
+}
+
+.list_a .for_email{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #fc8f00;
+    border-radius: 8px;
+    color: white;
+    width: 275px;
+    
+}
+.list_a .for_email-Tritanopia{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #000000;
+    border-radius: 8px;
+    color: white;
+    width: 275px;
+    
+}
+.list_a .for_email:hover{     background-color:   rgb(151, 149, 149); color: rgb(0, 0, 0); transition: 0.2s ease-in-out; }
+
+.list_a .back{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.drop_password{ font-size: 28px;}
+.restore{ font-size: 20px;}
+
+input{
+    width: 275px;
+    height: 37px;
+    border-radius: 5px;
+    margin-bottom: 30px; 
+    border: 0.3px solid rgb(164, 164, 164);
+
+}
+input:focus{
+    border: 0.3px solid  rgb(0, 119, 255);
+    outline: none;
+}
+.input-Tritanopia:focus{
+    border: 0.3px solid  #ff3333;
+    outline: none;
+}
+.input-MonoHromazia:focus{
+    border: 0.3px solid  #545454;
+    outline: none;
+}
+label{
+    font-family: 'e-ukrL';
+    font-size: 14px;
+    display: block;
+    line-height: 1.7rem;
+}

@@ -1,0 +1,52 @@
+body{box-sizing: border-box; font-family: 'e-ukr';}
+
+img{
+    width: 56px;
+    height: 56px;
+}
+.form{
+    border-radius: 15px;
+    width: 450px;
+}
+.form .list_a{
+    display: flex;
+    align-items: center; 
+}
+.list_a .for_email, .for_phone{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #fc8f00;
+    border-radius: 8px;
+    color: white;
+    width: 315px;
+    
+}
+.list_a .for_email-Tritanopia, .for_phone-Tritanopia{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #000000;
+    border-radius: 8px;
+    color: white;
+    width: 315px;
+    
+}
+.list_a .for_email-Tritanopia:hover, .for_phone-Tritanopia:hover{     background-color:   rgb(151, 149, 149); color: rgb(0, 0, 0); transition: 0.2s ease-in-out; }
+.list_a .for_email:hover, .for_phone:hover{     background-color:   rgb(151, 149, 149); color: rgb(0, 0, 0); transition: 0.2s ease-in-out; }
+
+
+.list_a .back{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.drop_password{ font-size: 28px;}
+.restore{ font-size: 20px;}
+
+
+
+

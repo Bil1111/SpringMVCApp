@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegestComponent } from './regest.component';
+import { RestoreEmailComponent } from './restore-email.component';
 
-describe('RegestComponent', () => {
-  let component: RegestComponent;
-  let fixture: ComponentFixture<RegestComponent>;
+describe('RestoreEmailComponent', () => {
+  let component: RestoreEmailComponent;
+  let fixture: ComponentFixture<RestoreEmailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegestComponent]
+      declarations: [RestoreEmailComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegestComponent);
+    fixture = TestBed.createComponent(RestoreEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

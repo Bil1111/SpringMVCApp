@@ -13,6 +13,21 @@
   "paypal" : "paypal.me/dobrydim",
   "iban" : "UA123456789012345678901234567",
   "animals" : [ {
+    "id" : 4,
+    "name" : "Белла",
+    "type" : "Собака",
+    "age" : 8,
+    "size" : "Великий",
+    "description" : "Активна та весела.",
+    "sex" : "Дівчинка",
+    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/1_g6px54.png",
+    "city" : "Київ",
+    "shelterPhoneNumber" : "380671234567",
+    "shelterName" : "Добрий Дім",
+    "vaccinated" : false,
+    "sterilized" : true,
+    "specialCare" : true
+  }, {
     "id" : 7,
     "name" : "Максі",
     "type" : "Собака",
@@ -27,21 +42,6 @@
     "vaccinated" : true,
     "sterilized" : true,
     "specialCare" : false
-  }, {
-    "id" : 4,
-    "name" : "Белла",
-    "type" : "Собака",
-    "age" : 8,
-    "size" : "Великий",
-    "description" : "Активна та весела.",
-    "sex" : "Дівчинка",
-    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/1_g6px54.png",
-    "city" : "Київ",
-    "shelterPhoneNumber" : "380671234567",
-    "shelterName" : "Добрий Дім",
-    "vaccinated" : true,
-    "sterilized" : true,
-    "specialCare" : true
   } ]
 }, {
   "id" : 2,
@@ -58,21 +58,6 @@
   "paypal" : "paypal.me/hatiko",
   "iban" : "UA098765432109876543210987654",
   "animals" : [ {
-    "id" : 5,
-    "name" : "Бані",
-    "type" : "Кролик",
-    "age" : 4,
-    "size" : "Середній",
-    "description" : "Непосидючий та жвавий.",
-    "sex" : "Хлопчик",
-    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156213/8_l4oopt.jpg",
-    "city" : "Львів",
-    "shelterPhoneNumber" : "380673456789",
-    "shelterName" : "Хатіко",
-    "vaccinated" : true,
-    "sterilized" : true,
-    "specialCare" : false
-  }, {
     "id" : 6,
     "name" : "Боні",
     "type" : "Кролик",
@@ -86,6 +71,21 @@
     "shelterName" : "Хатіко",
     "vaccinated" : true,
     "sterilized" : true,
+    "specialCare" : false
+  }, {
+    "id" : 5,
+    "name" : "Бані",
+    "type" : "Кролик",
+    "age" : 4,
+    "size" : "Середній",
+    "description" : "Непосидючий та жвавий.",
+    "sex" : "Хлопчик",
+    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156213/8_l4oopt.jpg",
+    "city" : "Львів",
+    "shelterPhoneNumber" : "380673456789",
+    "shelterName" : "Хатіко",
+    "vaccinated" : true,
+    "sterilized" : false,
     "specialCare" : false
   } ]
 }, {
@@ -103,21 +103,6 @@
   "paypal" : "paypal.me/safeanimals",
   "iban" : "UA112233445566778899001122334",
   "animals" : [ {
-    "id" : 2,
-    "name" : "Буся",
-    "type" : "Кіт",
-    "age" : 2,
-    "size" : "Малий",
-    "description" : "Мила та непосидюча дівчинка, яка любить ласку та тепло.",
-    "sex" : "Дівчинка",
-    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/3_eni01s.jpg",
-    "city" : "Одеса",
-    "shelterPhoneNumber" : "380676543210",
-    "shelterName" : "Тварини в безпеці",
-    "vaccinated" : true,
-    "sterilized" : true,
-    "specialCare" : false
-  }, {
     "id" : 8,
     "name" : "Луна",
     "type" : "Собака",
@@ -131,6 +116,21 @@
     "shelterName" : "Тварини в безпеці",
     "vaccinated" : true,
     "sterilized" : true,
+    "specialCare" : false
+  }, {
+    "id" : 2,
+    "name" : "Буся",
+    "type" : "Кіт",
+    "age" : 2,
+    "size" : "Малий",
+    "description" : "Мила та непосидюча дівчинка, яка любить ласку та тепло.",
+    "sex" : "Дівчинка",
+    "imageURL" : "https://res.cloudinary.com/dpqr3xkbh/image/upload/v1740156219/3_eni01s.jpg",
+    "city" : "Одеса",
+    "shelterPhoneNumber" : "380676543210",
+    "shelterName" : "Тварини в безпеці",
+    "vaccinated" : false,
+    "sterilized" : false,
     "specialCare" : false
   } ]
 }, {
@@ -205,7 +205,7 @@
     "shelterPhoneNumber" : "380671112233",
     "shelterName" : "Друг",
     "vaccinated" : true,
-    "sterilized" : true,
+    "sterilized" : false,
     "specialCare" : false
   } ]
 }, {
