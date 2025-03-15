@@ -1,8 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
-import {LoginAndRegestService} from './login-and-regest.service';
 declare const google: any;
 
 interface MapPoint {
@@ -24,7 +23,6 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
-  fact: string = '';
 
   title = 'FF';
   isHomePage: boolean = false;
@@ -34,11 +32,14 @@ export class AppComponent implements OnInit {
    ShowFooter: boolean = false;
    ShowHeader: boolean = true;
 
+   fact: string = '';
+   chatDuckDuckgo: boolean = false;
+   userInput: string = '';
+   responses: { query: string, answer: string }[] = [];
 
-  constructor(private router: Router, private http: HttpClient,private route: ActivatedRoute,private loginAdnRegestService: LoginAndRegestService,private sharedService: SharedService) {
+
+  constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
-      this.getFact();
-
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people'
       &&  this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin' &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
       &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
@@ -47,8 +48,7 @@ export class AppComponent implements OnInit {
       this.ShowHeader = this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin'
       &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
       &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
-      &&  this.router.url !== '/admin/blogadmin'  &&  this.router.url !== '/admin/tabel-animals'
-      && this.router.url !== '/admin/statistics';
+      &&  this.router.url !== '/admin/blogadmin'  &&  this.router.url !== '/admin/tabel-animals';
 
     })
     this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
@@ -57,39 +57,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const token = params['token'];
-
-      if (token) {
-        console.log("✅ Токен знайдено в URL:", token);
-        localStorage.setItem('token', token);
-        this.sharedService.changeLoginState(true);
-
-        // Видаляємо токен з URL і переходимо на головну
-        this.router.navigate(['/']);
-      } else {
-        // Якщо токен вже є в localStorage, просто змінюємо стан
-        const savedToken = localStorage.getItem('token');
-        if (savedToken) {
-          this.sharedService.changeLoginState(true);
-        }
-      }
-    });
-
-    // Перевіряємо, чи користувач на головній сторінці, і завантажуємо мапу
     this.router.events.subscribe(() => {
       this.isHomePage = this.router.url === '/';
       if (this.isHomePage) {
         this.loadMapPoints();
       }
     });
-  }
 
-  getFact() {
-    this.http.get<{ fact: string }>('http://localhost:8080/api/fact').subscribe({
-      next: (data) => (this.fact = data.fact),
-      error: (err) => console.error('Помилка отримання факту:', err),
-    });
+
   }
 
   loadMapPoints() {
@@ -116,14 +91,20 @@ export class AppComponent implements OnInit {
       // Створення інфо-вікна для мітки
       const infoWindow = new google.maps.InfoWindow({
         content: `
-          <div  style="font-family: 'e-ukr' max-width: 300px; padding: 10px; margin: 0;border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" >
-           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;font-weight: bold;text-decoration: none;  display: flex;  justify-content: center;
-             color: black; ">${point.name}</a>
-            <p style=" margin-top: 10px; font-size: 1.1rem">  <strong>Місто:</strong> ${point.city}</p>
-            <p style="font-size: 1.1rem" ><strong>Адреса:</strong> ${point.address}</p>
-            <p style="font-size: 1.1rem"><strong>Телефон:</strong> ${point.contactNumber}</p>
-            <p style="font-size: 1.1rem"><strong>Опис:</strong> ${point.description}</p>
-            <img src="${point.imageURL}" alt="${point.name}" style="width:100px; height:auto; object-fit: cover;  ">
+          <div  style="
+          max-width: 400px;
+          margin: 0px;
+          padding: 0px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+
+            <img src="${point.imageURL}" alt="${point.name}" style="width:100%; height:auto; object-fit: cover; border-radius: 5px; ">
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;  text-decoration: none;  display: flex;  justify-content: start; font-family: 'e-ukrB'; color: black; ">${point.name}</a>
+            <p style=" margin-top: 10px; font-size: 1.1rem"  font-family: 'e-ukr'>  <strong>Місто:</strong> ${point.city}</p>
+            <p style="font-size: 1.1rem" font-family: 'e-ukr' ><strong>Адреса:</strong> ${point.address}</p>
+            <p style="font-size: 1.1rem"  font-family: 'e-ukr'><strong>Телефон:</strong> ${point.contactNumber}</p>
+            <p style="font-size: 1.1rem"  font-family: 'e-ukrB';><strong>Опис:</strong> ${point.description}</p>
+
           </div>
         `,
       });
@@ -146,6 +127,28 @@ export class AppComponent implements OnInit {
   logout(){
     localStorage.removeItem('token');
     this.sharedService.changeLoginState(false);
-    this.router.navigate(["/sing-in"]);
    }
+
+   getFact() {
+    this.http.get<{ fact: string }>('http://localhost:8080/api/fact').subscribe({
+      next: (data) => (this.fact = data.fact),
+      error: (err) => console.error('Помилка отримання факту:', err),
+    });
+  }
+
+  show_chat(){
+    this.chatDuckDuckgo = !this.chatDuckDuckgo;
+  }
+
+  search(){
+      this.http.get<any>(`http://localhost:8080/duckduckgo/search?query="${this.userInput}"`).subscribe(response =>{
+        this.responses.push({ query: this.userInput, answer: response.answer });
+        this.userInput = '';
+      },(error) =>{
+        console.error('Помилка запиту:', error);
+      }
+    );
+  }
+
+
 }

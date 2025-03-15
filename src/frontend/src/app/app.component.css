@@ -398,9 +398,9 @@ nav ul li .Registr_pc:hover {
 }
 /* Загальний стиль для футера */
 footer {
-  font-family: 'e-ukr';
+  font-family: 'e-ukrR';
   font-size: smaller;
-  background-color:#dcdcdc;
+  background-color:#1F1F1F;
 
 }
 
@@ -409,12 +409,13 @@ footer {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content:space-evenly;
+  /* justify-content:space-evenly; */
+  gap: 50px;
   align-items: center;
   padding-top: 10px;
 }
 .info-section1{
-  margin-top: 25px;
+  margin-top: 20px;
 }
 .info-section1 ul,
 .info-section2 ul{
@@ -430,7 +431,7 @@ footer {
 .info-section1 a,
 .info-section2 a{
   text-decoration: none;
-  color: #000;
+  color: #EFEFEF;
 
 }
 .info-section1 a:hover,
@@ -441,17 +442,24 @@ footer {
 }
 
 .info-section2 p{
+
+font-family: 'e-ukrB';
   /* text-align: center; */
   margin-bottom: 5px;
   text-transform: uppercase;
+  color: #EFEFEF;
+
 
 }
 
+
 .credits-section {
-  text-align: center;
+  text-align: end;
   margin-top: 20px;
   font-size: 14px;
   padding-bottom: 10px;
+  position: relative;
+  right: 100px;
 }
 
 .logo-section{
@@ -469,6 +477,10 @@ footer {
   position: relative;
   left: 20px;
   top: 20px;
+}
+.project{
+  color: #EFEFEF;
+
 }
 
 @media (max-width: 630px) {
@@ -531,3 +543,84 @@ footer {
 
   }
 } */
+
+.fact_conteiner{
+  position: relative;
+  left: 330px;
+  width: 65%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.fact{
+  display: flex;
+  gap: 10px;
+}
+.fact .fact_text{ font-family: 'e-ukrB'; font-size: 16px;}
+.fact_button{
+  border: none;
+  background-color: white;
+}
+.fact_content{
+  font-family: 'e-ukrR';
+  color: #000000;
+  max-width: 100ch; /* Обмежує текст до 30 символів */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 15px;
+}
+
+.show_chat{
+  position: fixed;
+  bottom: 30px;
+  right: 100px;
+  border: none;
+  background-color: #fc8f00;
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.chat-container {
+  position: fixed;
+  bottom: 70px;  
+  right: 100px;  
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  
+}
+.duck_search{
+  border: none;
+  background-color: #fc8f00;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.duck_search:hover{
+  background-color:#e28000;
+  color: #000000;
+  transition: 0.25s ease-in-out;
+}
+.input_user{
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #c2c2c2;
+}
+
+
+.chat-messages {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+ .chat-message {
+  margin-bottom: 10px;
+}
+
+.chat-message p {
+  margin: 0;
+} 

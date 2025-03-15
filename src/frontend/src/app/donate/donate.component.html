@@ -38,7 +38,7 @@
       <span (click)="closeModal()" class="close-button">&times;</span>
       <h2>м. {{ selectedShelter.city }}</h2>
       <h3 class="nameshelter" >Притулок  {{selectedShelter.name }}</h3>
-      <img [src]="selectedShelter.imageURL" alt="{{ selectedShelter.city }}" />
+      <img [src]="selectedShelter.imageURL" alt="{{ selectedShelter.city }}" class="photo_f"/>
       <h3 class="contact_info_in_modal">Контактна інформація</h3>
 
       <!-- <p>ID: {{ shelter.id }}</p> -->
@@ -46,10 +46,21 @@
       <p>Телефон: {{ selectedShelter.contactNumber }}</p>
       <p>Email: {{ selectedShelter.email }}</p>
 
+
+      <div class="notification" *ngIf="notificationMessage" [class.error]="isError">
+        {{ notificationMessage }}
+      </div>
+
       <h3 class="recvizit_info_in_modal">Ревізити для переказу</h3>
-      <p>Карта: {{ selectedShelter.card }}</p>
-        <p>PayPal: {{ selectedShelter.paypal }}</p>
-        <p>IBAN: {{ selectedShelter.iban }}</p>
+      <p>Карта: {{ selectedShelter.card }}
+        <button (click)="copyToClipboard(selectedShelter.card)" class="button_copy"><img src="copy.svg" alt="" class="copyimg"></button>
+      </p>
+        <p>PayPal: {{ selectedShelter.paypal }} 
+          <button (click)="copyToClipboard(selectedShelter.paypal)" class="button_copy" ><img src="copy.svg" alt="" class="copyimg"></button>
+        </p>
+        <p>IBAN: {{ selectedShelter.iban }}
+          <button (click)="copyToClipboard(selectedShelter.iban)" class="button_copy"><img src="copy.svg" alt="" class="copyimg"></button>
+        </p>
     </div>
   </div>
 

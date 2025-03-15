@@ -1,150 +1,173 @@
+
 <header *ngIf=" ShowHeader">
   <div class="LinkIcon">
-    <a class="d-none d-lg-block " href="">
-      <img class="img" src="/Logo.svg" alt="FF_LOGO"/>
+    <a class="d-none d-lg-block " href="" >
+     <img class="img" src="/Logo.svg" alt="FF_LOGO"/>
     </a>
   </div>
 
-  <!--  <h1>Головна сторінка</h1>-->
+<!--  <h1>Головна сторінка</h1>-->
 
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" >
 
     <!-- Button to toggle the sidenav -->
-    <button class="btn btn-light d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidenav"
-            (click)="Openmemu()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="btn btn-light d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidenav" (click)="Openmemu()">
+    <span class="navbar-toggler-icon"  ></span>
+  </button>
 
-    <!-- Sidenav (Offcanvas) -->
-    <div class="offcanvas offcanvas-start " tabindex="-1" id="sidenav" aria-labelledby="sidenavLabel"
-         [class.show]="visible" [attr.aria-hidden]="!visible" data-bs-backdrop="true">
+<!-- Sidenav (Offcanvas) -->
+    <div class="offcanvas offcanvas-start " tabindex="-1" id="sidenav" aria-labelledby="sidenavLabel" [class.show]="visible" [attr.aria-hidden]="!visible" data-bs-backdrop="true">
 
-      <div class="offcanvas-header">
-        <div class="LinkIconPhone">
-          <a class="d-block d-lg-none" href="">
-            <img class="imgPhone" src="/Logo.svg" alt="FF_LOGO"/>
-          </a>
+  <div class="offcanvas-header">
+    <div class="LinkIconPhone">
+    <a class="d-block d-lg-none" href="" >
+     <img class="imgPhone" src="/Logo.svg" alt="FF_LOGO"/>
+    </a>
+  </div>
+
+    <h2 class="title">Find a Friend</h2>
+    <button class="btn-close"  data-bs-dismiss="offcanvas" (click)="closeMenu()"> </button>
+  </div>
+
+
+  <div class="offcanvas-body" >
+    <ul class="navbar-nav">
+
+      <div class="Descktop d-none d-lg-block">
+      <li class="nav-item "><a class="nav-link" routerLink='/find-f'  routerLinkActive="active">Знайти друга</a></li>
+      <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a class="nav-link" >Волонтерство</a>
+        <div class="dropdown-content">
+          <a routerLink="/free-people"  >Стати волонтером</a>
+          <a routerLink="/adopt"  >Усиновити тваринку</a>
+          <a routerLink="/thigns"  >Допомога</a>
         </div>
+      </li>
+      <li class="nav-item "><a class="nav-link" routerLink='/donate'  routerLinkActive="active">Донат</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/about'  routerLinkActive="active">Про нас</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news'  routerLinkActive="active">Блог та новини</a></li>
+      </div>
 
-        <h2 class="title">Find a Friend</h2>
-        <button class="btn-close" data-bs-dismiss="offcanvas" (click)="closeMenu()"></button>
+      <div class="Phone_and_Tablet d-block d-lg-none " >
+      <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active" (click)="closeMenu()">Знайти друга</a></li>
+      <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a class="nav-link"  >Волонтерство</a>
+        <div class="dropdown-contentPhone">
+          <a routerLink="/free-people" (click)="closeMenu()">Стати волонтером</a>
+          <a routerLink="/adopt"(click)="closeMenu()" >Усиновити тваринку</a>
+          <a routerLink="/thigns"(click)="closeMenu()">Допомога</a>
+        </div>
+      </li>
+      <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active"  (click)="closeMenu()">Донат</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/about' routerLinkActive="active" (click)="closeMenu()">Про нас</a></li>
+      <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news' routerLinkActive="active" (click)="closeMenu()">Блог та новини</a></li>
       </div>
 
 
-      <div class="offcanvas-body">
-        <ul class="navbar-nav">
+       <div class="Regg d-none d-lg-block" >
+        <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged">Вхід</a>
+        <a routerLink='/regest' class="Registr"  *ngIf="!isLogged">Зареєструватися</a>
 
-          <div class="Descktop d-none d-lg-block">
-            <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active">Знайти друга</a>
-            </li>
-            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a
-              class="nav-link">Волонтерство</a>
-              <div class="dropdown-content">
-                <a routerLink="/free-people">Стати волонтером</a>
-                <a routerLink="/adopt">Усиновити тваринку</a>
-                <a routerLink="/thigns">Допомога</a>
-              </div>
-            </li>
-            <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active">Донат</a></li>
-            <li class="nav-item "><a class="nav-link" routerLink='/about' routerLinkActive="active">Про нас</a></li>
-            <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news' routerLinkActive="active">Блог та
-              новини</a></li>
-          </div>
+        <div *ngIf="isLogged" class="login">
+          <img src="/user.svg" alt="1488" class="photo">
+          <button class="btn_out" (click)="logout()">Вийти</button>
+         </div>
 
-          <div class="Phone_and_Tablet d-block d-lg-none ">
-            <li class="nav-item "><a class="nav-link" routerLink='/find-f' routerLinkActive="active"
-                                     (click)="closeMenu()">Знайти друга</a></li>
-            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}"><a
-              class="nav-link">Волонтерство</a>
-              <div class="dropdown-contentPhone">
-                <a routerLink="/free-people" (click)="closeMenu()">Стати волонтером</a>
-                <a routerLink="/adopt" (click)="closeMenu()">Усиновити тваринку</a>
-                <a routerLink="/thigns" (click)="closeMenu()">Допомога</a>
-              </div>
-            </li>
-            <li class="nav-item "><a class="nav-link" routerLink='/donate' routerLinkActive="active"
-                                     (click)="closeMenu()">Донат</a></li>
-            <li class="nav-item "><a class="nav-link" routerLink='/about' routerLinkActive="active"
-                                     (click)="closeMenu()">Про нас</a></li>
-            <li class="nav-item "><a class="nav-link" routerLink='/blog-and-news' routerLinkActive="active"
-                                     (click)="closeMenu()">Блог та новини</a></li>
-          </div>
+        <!-- <ol>
+          <li class="drop">
+               <img src="/imgforlogin" alt="1488" >
+            <div class="menulist">
+              <a routerLink='/sing-in' class="Enter_pc" *ngIf="!isLogged">Вхід</a>
+             <a routerLink='/regest' class="Registr_pc"  *ngIf="!isLogged">Зареєструватися</a>
 
-
-          <div class="Regg d-none d-lg-block">
-            <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged">Вхід</a>
-            <a routerLink='/regest' class="Registr" *ngIf="!isLogged">Зареєструватися</a>
-
-            <div *ngIf="isLogged" class="login">
-              <img src="/user.svg" alt="user" class="photo">
+             <div *ngIf="isLogged">
               <button class="btn_out" (click)="logout()">Вийти</button>
+             </div>
+
             </div>
+          </li>
+        </ol> -->
+  </div>
 
-          </div>
+  <div class="ReggPhone d-block d-lg-none"  >
+    <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged" (click)="closeMenu()">Вхід</a>
+    <a routerLink='/regest' class="Registr"  *ngIf="!isLogged" (click)="closeMenu()">Зареєструватися</a>
 
-          <div class="camera-container">
-            <a routerLink='/web-camera' class="btn-camera">📷 Доступ до камери</a>
-          </div>
+    <div *ngIf="isLogged" class="loginphone">
+      <img src="/user.svg" alt="1488" class="photo">
+      <button class="btn_out" (click)="logout()" >Вийти</button>
+     </div>
+  </div>
+    </ul>
+  </div>
 
-          <div class="ReggPhone d-block d-lg-none">
-            <a routerLink='/sing-in' class="Enter" *ngIf="!isLogged" (click)="closeMenu()">Вхід</a>
-            <a routerLink='/regest' class="Registr" *ngIf="!isLogged" (click)="closeMenu()">Зареєструватися</a>
-
-            <div *ngIf="isLogged" class="loginphone">
-              <img src="/user.svg" alt="1488" class="photo">
-              <button class="btn_out" (click)="logout()">Вийти</button>
-            </div>
-          </div>
-        </ul>
-      </div>
-
-    </div>
+</div>
   </nav>
 
 </header>
 
 
 <router-outlet></router-outlet>
-<!--<div>-->
-<!--  <h2>Рандомний факт:</h2>-->
-<!--  <p>{{ fact }}</p>-->
-<!--</div>-->
-<!--<button (click)="getFact()">Оновити</button>-->
+
+
+<div *ngIf="isHomePage" class="fact_conteiner">
+  <div  class="fact">
+    <p class="fact_text">Забавний факт!</p>
+    <button (click)="getFact()" class="fact_button"><img src="Group 56.svg" alt="оновити"></button>
+  </div>
+  <div class="fact_content">{{fact}}</div>
+</div>
+
+
 
 <div class="map-container" *ngIf="isHomePage">
-  <h1>Map Shelters</h1>
 
   <!-- <div class="findshelter">
     <input type="text" [(ngModel)]="searcshelter">  <button (click)="findshelter()">Пошук</button>
 </div> -->
 
-  <div id="map" style="width: 90%; height: 650px; border-radius: 17px;"></div>
+  <div id="map" style="width: 95%; height: 650px; border-radius: 17px;"></div>
 
 </div>
+
+<div class="chat-container" *ngIf="chatDuckDuckgo">
+  <div>
+    <input [(ngModel)]="userInput" (keyup.enter)="search()" placeholder="Введіть запит..."  class="input_user"/>
+  <button (click)="search()" class="duck_search">Шукати</button>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let response of responses" class="chat-message">
+      <p><strong>Ви:</strong> {{ response.query }}</p>
+      <p><strong>Відповідь:</strong> {{ response.answer }}</p>
+    </div>
+  </div>
+</div>
+<div><button class="show_chat" (click)="show_chat()"><i class="bi bi-cloud-fill" style="color: white; "></i></button></div>
 
 
 <footer *ngIf="ShowFooter">
   <div class="footer-container">
     <div class="info-section1">
+
       <ul>
+        <li><a routerLink="/" style="font-family: 'e-ukrB';">Find a Friend</a></li>
         <li><a routerLink="/find-f">Знайти друга</a></li>
         <li><a routerLink="/donate">Донат</a></li>
         <li><a routerLink="/about">Про нас</a></li>
         <li><a routerLink="/blog-and-news">Блог та новини</a></li>
       </ul>
     </div>
-    <div class="logo-section">
-      <img class="imgfooter" src="/Logo.svg" alt="FF_LOGO"/>
+    <!-- <div class="logo-section">
+      <img class="imgfooter" src="/Logo.svg" alt="FF_LOGO" />
       <p>Find a Friend</p>
-    </div>
+    </div> -->
     <div class="info-section2">
       <p>Волонтерство</p>
-      <ul>
-        <li><a routerLink="/free-people">Стати волонтером</a></li>
-        <li><a routerLink="/adopt">Усиновити тваринку</a></li>
-        <li><a routerLink="/thigns">Допомога</a></li>
-        <!-- <li><a routerLink="/gifthouse">Подарувати дім</a></li> -->
-      </ul>
+        <ul>
+          <li><a routerLink="/free-people">Стати волонтером</a></li>
+          <li><a routerLink="/adopt">Усиновити тваринку</a></li>
+          <li><a routerLink="/thigns">Допомога</a></li>
+          <!-- <li><a routerLink="/gifthouse">Подарувати дім</a></li> -->
+        </ul>
     </div>
 
   </div>
