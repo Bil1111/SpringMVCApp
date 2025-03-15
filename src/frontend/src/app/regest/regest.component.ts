@@ -63,9 +63,6 @@ export class RegestComponent  implements OnInit {
     // }
 
     const registrationData = {
-      // email: this.email,
-      // password: this.password
-
       firstName: this.Name_user,
       lastName: this.Surname_user,
       email: this.Email_user,
