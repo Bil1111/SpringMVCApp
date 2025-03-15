@@ -14,11 +14,15 @@ public class DuckDuckGoController {
     @Autowired
     private  DuckDuckGoService duckDuckGoService;
 
-
     @GetMapping("/search")
-    public ResponseEntity<String> search(@RequestParam String query) {
+    public ResponseEntity<DuckDuckGoService.AnswerResponse> search(@RequestParam String query) {
+        // Отримуємо відповідь від сервісу
         String result = duckDuckGoService.getInstantAnswer(query);
-        return ResponseEntity.ok(result);
+
+        // Формуємо JSON-відповідь
+        return ResponseEntity.ok(new DuckDuckGoService.AnswerResponse(result));
     }
+
+
 }
 
