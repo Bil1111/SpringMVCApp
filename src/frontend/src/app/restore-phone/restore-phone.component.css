@@ -1,8 +1,8 @@
 body{box-sizing: border-box; font-family: 'e-ukr';}
 
 img{
-    width: 48px;
-    height: 48px;
+    width: 95px;
+    height: 95px;
 }
 .form{
     border-radius: 15px;
@@ -41,6 +41,7 @@ img{
     display: flex;
     justify-content: center;
     text-decoration: none;
+    color: #000000;
 }
 
 .drop_password{ font-size: 28px;}

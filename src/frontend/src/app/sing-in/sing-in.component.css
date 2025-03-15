@@ -125,8 +125,8 @@ body{box-sizing: border-box; font-family: 'e-ukr';
 
 .Logo_in_forms{
 
-  width: 56px;
-  height: 56px;
+  width: 95px;
+  height: 95px;
 }
 .text{
   font-size: 28px;
@@ -216,27 +216,30 @@ margin-bottom: 7px;
   margin-bottom: 0;
   font-size: 12px;
 }
-.Do_you_have_account a{ margin-left: 5px;}
-.Do_you_have_account a{ margin-left: 5px; text-decoration: none; } 
+/* .Do_you_have_account a{ margin-left: 5px;} */
+.Do_you_have_account a{ margin-left: 5px; text-decoration: none; color: #000000;} 
 .Do_you_have_account a:hover{text-decoration: underline;} 
 
 .google-button{
+  font-family: 'e-ukrR', sans-serif;
+  font-size: 15px;
   margin-left: 13px;
   margin-top: 7px;
-  padding: 3px;
-  padding-left: 9px;
+  padding: 3px 8px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: black;
   background-color: white;
   border-radius: 7px;
-  border: 1.0px solid rgb(164, 164, 164);}
+  border: 1px solid rgb(164, 164, 164);
+  cursor: pointer;
+}
  
   
 .Google_logo{
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   margin-right: 15px;
 }
 .eye1, .eye2{
@@ -263,5 +266,6 @@ margin-bottom: 7px;
 .restore_conteiner .choose_restore{
   text-decoration: none;
   font-size: 14px;
+  color: #000000;
 }
 .restore_conteiner .choose_restore:hover{text-decoration: underline;}
