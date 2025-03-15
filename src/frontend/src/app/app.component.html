@@ -128,6 +128,21 @@
 
 </div>
 
+<div class="chat-container" *ngIf="chatDuckDuckgo">
+  <div>
+    <input [(ngModel)]="userInput" (keyup.enter)="search()" placeholder="Введіть запит..."  class="input_user"/>
+  <button (click)="search()" class="duck_search">Шукати</button>
+  </div>
+  
+  <div class="chat-messages">
+    <div *ngFor="let response of responses" class="chat-message">
+      <p><strong>Ви:</strong> {{ response.query }}</p>
+      <p><strong>Відповідь:</strong> {{ response.answer }}</p>
+    </div>
+  </div>
+</div>
+<div><button class="show_chat" (click)="show_chat()"><i class="bi bi-cloud-fill" style="color: white; "></i></button></div>
+
 
 <footer *ngIf="ShowFooter">
   <div class="footer-container">

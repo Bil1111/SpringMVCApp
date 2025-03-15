@@ -33,7 +33,9 @@ export class AppComponent implements OnInit {
    ShowHeader: boolean = true;
 
    fact: string = '';
-
+   chatDuckDuckgo: boolean = false;
+   userInput: string = '';
+   responses: { query: string, answer: string }[] = [];
 
   
   constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
@@ -133,4 +135,20 @@ export class AppComponent implements OnInit {
       error: (err) => console.error('Помилка отримання факту:', err),
     });
   }
+
+  show_chat(){
+    this.chatDuckDuckgo = !this.chatDuckDuckgo;
+  }
+
+  search(){
+      this.http.get<any>(`http://localhost:8080/duckduckgo/search?query="${this.userInput}"`).subscribe(response =>{
+        this.responses.push({ query: this.userInput, answer: response.answer });
+        this.userInput = '';
+      },(error) =>{
+        console.error('Помилка запиту:', error);
+      }
+    );
+  }
+
+
 }
