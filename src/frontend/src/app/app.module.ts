@@ -25,6 +25,7 @@ import { NewPage2OnlytextComponent } from './new-page2-onlytext/new-page2-onlyte
 import { NewPasswordPhoneComponent } from './new-password-phone/new-password-phone.component';
 import { NewPasswordEmailComponent } from './new-password-email/new-password-email.component';
 import {WebcamComponent} from './web-camera/web-camera.component';
+import {PaymentComponent} from './payment.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {WebcamComponent} from './web-camera/web-camera.component';
     NewPage2OnlytextComponent,
     NewPasswordPhoneComponent,
     NewPasswordEmailComponent,
-    WebcamComponent
+    WebcamComponent,
+    PaymentComponent
 
   ],
   imports: [

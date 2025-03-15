@@ -1,45 +1,38 @@
 package com.example.config.LiqPayPayment;
 
 import com.liqpay.LiqPay;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+@RestController
+@RequestMapping("/pay")
 public class PaymentController {
 
-    @Autowired
-    private LiqPay liqPay;
+    private static final String PUBLIC_KEY="sandbox_i20120828333";
 
-    @GetMapping("/pay")
-    public String generatePaymentForm(
-            @RequestParam("amount") String amount,
-            @RequestParam("description") String description,
-            Model model) {
+    private static final String PRIVATE_KEY="sandbox_obLr17haSNFwBSjBTA60RR9TTMHJs56vLdxaSyB7";
+
+    @GetMapping
+    public ResponseEntity<String> generatePaymentForm(@RequestParam("amount") String amount,
+                                                      @RequestParam("description") String description) {
+        LiqPay liqpay = new LiqPay(PUBLIC_KEY, PRIVATE_KEY);
 
         Map<String, String> params = new HashMap<>();
-        params.put("action", "pay"); // Додаємо обов’язковий параметр action
+        params.put("action", "pay");
         params.put("amount", amount);
         params.put("currency", "UAH");
         params.put("description", description);
         params.put("order_id", "order_" + System.currentTimeMillis());
         params.put("sandbox", "1");
-        params.put("language", "uk"); // Опціонально, для української мови
+        params.put("language", "uk");
 
-        try {
-            String paymentForm = liqPay.cnb_form(params);
-            model.addAttribute("paymentForm", paymentForm);
-            return "payment";
-        } catch (Exception e) {
-            System.err.println("Error generating LiqPay form: " + e.getMessage());
-            model.addAttribute("error", "Помилка генерації форми: " + e.getMessage());
-            return "error"; // Використовуйте шаблон error.html для відображення помилок
-        }
-    }
-    }
+        // Генеруємо HTML-форму для платежу
+        String paymentForm = liqpay.cnb_form(params);
+        System.out.println("HTML-форма: " + paymentForm);
 
+        return ResponseEntity.ok(paymentForm);
+    }
+}

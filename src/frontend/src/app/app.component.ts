@@ -49,7 +49,8 @@ export class AppComponent implements OnInit {
       this.ShowHeader = this.router.url !== '/admin' && this.router.url !== '/admin/shelteradmin'
         && this.router.url !== '/admin/usersadmin' && this.router.url !== '/admin/volonteradmin'
         && this.router.url !== '/admin/adopradmin' && this.router.url !== '/admin/wardadmin'
-        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals';
+        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals'
+        && this.router.url !== '/admin/statistics';
 
     })
     this.sharedService.isLoggedIn$.subscribe(isLoggedIn => {
@@ -153,7 +154,7 @@ export class AppComponent implements OnInit {
       response => {
         console.log('Отримана відповідь:', response);  // Лог для відповіді
         const answerText = response.answer;  // Витягти відповідь з об'єкта
-        this.responses.push({ query: this.userInput, answer: answerText });  // Додаємо відповідь до списку
+        this.responses.push({query: this.userInput, answer: answerText});  // Додаємо відповідь до списку
         this.userInput = '';
         console.log('Пошук завершено. Відповідь додано до списку.');  // Лог після додавання відповіді
       },
@@ -162,8 +163,6 @@ export class AppComponent implements OnInit {
       }
     );
   }
-
-
 
 
 }

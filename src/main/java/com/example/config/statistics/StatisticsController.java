@@ -14,8 +14,18 @@ class StatisticsController {
     @Autowired
     private  StatisticsService statisticsService;
 
-    @GetMapping("/user")
-    public Map<String, Object> getUserStatistics() {
-        return statisticsService.getUserStatistics();
+    @GetMapping("/adoptions")
+    public Map<String, Integer> getAdoptionStats() {
+        return statisticsService.getAdoptionStats();
+    }
+
+    @GetMapping("/wards")
+    public Map<String, Integer> getWardStats() {
+        return statisticsService.getWardStats();
+    }
+
+    @GetMapping("/volunteers")
+    public Map<String, Integer> getVolunteerStats() {
+        return statisticsService.getVolunteerStats();
     }
 }
