@@ -1,0 +1,15 @@
+<body>
+    <div class="d-flex justify-content-center align-content-center my-5  conteiner_form">
+       <div class="shadow p-4 form">
+            <div class="d-flex justify-content-center my-3"> <img src="/Logo.svg" alt="Лого"> </div>
+            <div class="d-flex justify-content-center drop_password"><p>Скидання пароля</p></div> 
+            <div class="d-flex justify-content-center restore"><p>Оберіть спосіб відновлення</p></div>
+          <div class=" d-flex flex-column  list_a">
+             <a href="restore-phone" class="p-1 for_phone" [ngClass]="selectedClass">За номером телефону</a>
+            <a href="restore-email" class="p-1 for_email" [ngClass]="selectedClass">За поштою</a>
+            <a href="sing-in" class="back">Назад</a>
+          </div>
+         
+        </div>
+   </div>   
+   </body>

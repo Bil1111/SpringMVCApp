@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegestComponent } from './regest.component';
+import { ChooseRestoreComponent } from './choose-restore.component';
 
-describe('RegestComponent', () => {
-  let component: RegestComponent;
-  let fixture: ComponentFixture<RegestComponent>;
+describe('ChooseRestoreComponent', () => {
+  let component: ChooseRestoreComponent;
+  let fixture: ComponentFixture<ChooseRestoreComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegestComponent]
+      declarations: [ChooseRestoreComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegestComponent);
+    fixture = TestBed.createComponent(ChooseRestoreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

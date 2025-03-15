@@ -1,0 +1,19 @@
+<body>
+    <div class="d-flex justify-content-center align-content-center my-5  conteiner_form">
+       <div class="shadow p-4 form">
+            <div class="d-flex justify-content-center my-3"> <img src="/Logo.svg" alt="Лого"> </div>
+            <div class="d-flex justify-content-center drop_password"><p>Скидання пароля</p></div>
+
+            <form (ngSubmit)="Restore_email()">
+                <div class="d-grid justify-content-center align-content-center">
+                    <label for="email">Пошта</label>
+                    <input type="email" required id="email"  [(ngModel)]="Email_user"  name="email" [ngClass]="selectedClass">
+                    </div>
+                    <div class=" d-flex flex-column  list_a">
+                        <button type="submit" class="p-1 for_email" [ngClass]="selectedClass" [ngClass]="selectedClass">Скинути</button>
+                        <a href="choose-restore" class="back">Назад</a>
+                      </div>
+            </form>
+        </div>
+   </div>
+   </body>

@@ -25,13 +25,12 @@ overflow-x: hidden;
   text-align: center;
   padding: 20px;
   border-radius: 15px;
-  /* width: 40%;
+  display: grid;
+  place-items: center;
+   /* width: 40%;
   height: 600px; */
   /* background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
-  display: grid;
-  place-items: center;
-  
  
 
 }
@@ -272,7 +271,7 @@ margin-bottom: 100px;
 width: 60%; /* Ширина блоку */
 margin: 0 auto; /* Центрування по горизонталі */
 text-align: left; /* Текст вирівняний ліворуч */
-margin-bottom: 200px;
+/* margin-bottom: 180px; */
 margin-top: 50px;
 }
 

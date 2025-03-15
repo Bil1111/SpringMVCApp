@@ -12,6 +12,12 @@ import { GifthouseComponent } from './gifthouse/gifthouse.component';
 import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
 import {accsecAdminGuard} from './accsec-admin.guard';
+import { ChooseRestoreComponent } from './choose-restore/choose-restore.component';
+import { RestorePhoneComponent } from './restore-phone/restore-phone.component';
+import { RestoreEmailComponent } from './restore-email/restore-email.component'; 
+import { NewPage2OnlytextComponent } from './new-page2-onlytext/new-page2-onlytext.component';
+import { NewPasswordPhoneComponent } from './new-password-phone/new-password-phone.component';
+import { NewPasswordEmailComponent } from './new-password-email/new-password-email.component';
 
 
 const routes: Routes = [
@@ -26,6 +32,12 @@ const routes: Routes = [
   { path: 'gifthouse', component: GifthouseComponent },
   { path: 'thigns', component: ThignsComponent },
   { path: 'for-all-shelter', component: ForAllShelterComponent },
+  { path: 'choose-restore', component: ChooseRestoreComponent },
+  { path: 'restore-phone', component: RestorePhoneComponent },
+  { path: 'restore-email', component: RestoreEmailComponent },
+  { path: 'new-page2-onlytext', component: NewPage2OnlytextComponent },
+  { path: 'new-password-phone', component: NewPasswordPhoneComponent },
+  { path: 'new-password-email', component: NewPasswordEmailComponent },
 
   { path: 'admin', loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule),
     // canActivate: [accsecAdminGuard] 

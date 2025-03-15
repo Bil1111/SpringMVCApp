@@ -18,7 +18,13 @@ import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
 // import { AdminModule } from './Admin/admin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ChooseRestoreComponent } from './choose-restore/choose-restore.component';
+import { DaltonizmService } from './daltonizm.service';
+import { RestorePhoneComponent } from './restore-phone/restore-phone.component';
+import { RestoreEmailComponent } from './restore-email/restore-email.component';
+import { NewPage2OnlytextComponent } from './new-page2-onlytext/new-page2-onlytext.component';
+import { NewPasswordPhoneComponent } from './new-password-phone/new-password-phone.component';
+import { NewPasswordEmailComponent } from './new-password-email/new-password-email.component';
 
 
 @NgModule({
@@ -35,6 +41,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GifthouseComponent,
     ThignsComponent,
     ForAllShelterComponent,
+    ChooseRestoreComponent,
+    RestorePhoneComponent,
+    RestoreEmailComponent,
+    NewPage2OnlytextComponent,
+    NewPasswordPhoneComponent,
+    NewPasswordEmailComponent,
 
 
 

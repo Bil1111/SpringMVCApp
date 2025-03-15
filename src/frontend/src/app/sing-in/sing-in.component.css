@@ -1,94 +1,94 @@
-* {
-  box-sizing: border-box; /* Включити відступи в ширину */
-  margin: 0; /* Скидання зовнішніх відступів */
-  padding: 0; /* Скидання внутрішніх відступів */
+/* * {
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
 }
 
 body {
   width: 100%;
-  height: 100vh; /* Займає всю висоту вікна */
-  display: flex; /* Використання flex для центрування */
-  justify-content: center; /* Центрування по горизонталі */
-  align-items: center; /* Центрування по вертикалі */
-  background-color: #f4f4f4; /* Світло-сірий фон */
+  height: 100vh; 
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  background-color: #f4f4f4; 
 }
 
 .container {
   font-family: "e-ukr";
   width: 100%;
-  max-width: 400px; /* Максимальна ширина контейнера */
-  margin: 75px auto; /* Центрування контейнера */
+  max-width: 400px; 
+  margin: 75px auto;
 }
 
 .Costumer_Sing_In {
   display: flex;
-  flex-direction: column; /* Вертикальне розташування */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
-  padding: 2rem; /* Внутрішній відступ */
-  background-color: #ffffff; /* Білий фон */
-  border-radius: 10px; /* Закруглені кути */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Тінь */
-  animation: fadeIn 0.5s ease-in-out; /* Анімація появи */
+  padding: 2rem; 
+  background-color: #ffffff; 
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 h2 {
   margin-bottom: 2rem;
-  text-align: center; /* Центрування тексту */
-  color: #333; /* Колір тексту */
+  text-align: center; 
+  color: #333; 
 }
 
 input {
   font-family: "e-ukrL";
-  width: 100%; /* Ширина інпутів */
-  padding: 10px; /* Внутрішній відступ */
-  border: 1px solid #ccc; /* Сірий контур */
-  border-radius: 4px; /* Закруглені кути */
-  margin-bottom: 1rem; /* Відступ знизу для кожного інпуту */
-  transition: border 0.3s; /* Анімація зміни контуру */
+  width: 100%; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-bottom: 1rem;
+  transition: border 0.3s; 
 }
 
 input:focus {
-  border: 1px solid #007bff; /* Синій контур при фокусі */
-  outline: none; /* Скидання стандартного контуру */
+  border: 1px solid #007bff; 
+  outline: none; 
 }
 
 .En {
   
-  width: 100%; /* Ширина кнопки */
+  width: 100%; 
   padding: 7px; 
-  background-color: #fc8f00; /* Синій фон */
-  color: white; /* Білий текст */
-  border: none; /* Без контуру */
-  border-radius: 5px; /* Закруглені кути */
-  cursor: pointer; /* Курсор у вигляді вказівника */
-  font-size: 16px; /* Розмір шрифту */
-  transition: background-color 0.3s; /* Анімація зміни кольору фону */
+  background-color: #fc8f00; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s; 
   margin-top: 15px;
 }
 
 .En:hover {
-  background-color: #e48304; /* Темніший синій при наведенні */
+  background-color: #e48304; 
 }
 
 .register-link {
   font-family: "e-ukrL";
-  text-align: center; /* Центрування тексту */
-  margin-top: 1rem; /* Відступ зверху */
+  text-align: center; 
+  margin-top: 1rem; 
 }
 
 .register-link a {
-  color: #007bff; /* Синій текст */
-  text-decoration: none; /* Без підкреслення */
+  color: #007bff; 
+  text-decoration: none; 
 }
 
 .register-link a:hover {
-  text-decoration: underline; /* Підкреслення при наведенні */
+  text-decoration: underline; 
 }
 
 .error {
-  color: red; /* Червоний колір для повідомлення про помилку */
-  margin-top: 1rem; /* Відступ зверху */
+  color: red; 
+  margin-top: 1rem; 
 }
 
 
@@ -114,8 +114,154 @@ label{
   border-radius: 5px;
   transition: border 0.3s;
 }
-/* Анімація появи */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+} */
+body{box-sizing: border-box; font-family: 'e-ukr';
+  /* background-color: rgb(255, 46, 46); */
+
 }
+
+.Logo_in_forms{
+
+  width: 56px;
+  height: 56px;
+}
+.text{
+  font-size: 28px;
+}
+
+.conteiner_form{
+  display: flex;
+  /* z-index: 10;  */
+  position: relative; 
+}
+
+.form{
+  /* background-color: rgb(255, 255, 255); */
+  border-radius: 15px;
+  width: 450px;
+}
+input{
+  width: 275px;
+  height: 37px;
+  border-radius: 5px;
+  /* border: solid 0.2px; */
+  margin-bottom: 7px; 
+  border: 0.3px solid rgb(164, 164, 164);
+
+}
+input:focus{
+  border: 0.3px solid  rgb(0, 119, 255);
+  outline: none;
+}
+.input-Tritanopia:focus{
+  border: 0.3px solid  #ff3333;
+  outline: none;
+}
+.input-MonoHromazia:focus{
+  border: 0.3px solid  #545454;
+  outline: none;
+}
+label{
+  font-family: 'e-ukrL';
+  font-size: 14px;
+  display: block;
+  line-height: 1.7rem;
+}
+/* .contunium {
+  
+} */
+.contunium .bc{
+width: 275px;
+border-radius: 6px;
+color: white;
+background-color: #fc8f00;
+border: solid 0.5px white;
+margin-bottom: 7px;
+
+}
+.contunium .bc-Tritanopia{
+  width: 275px;
+  border-radius: 6px;
+  color: white;
+  background-color: #000000;
+  border: solid 0.5px white;
+  margin-bottom: 7px;
+
+}
+.contunium .bc-MonoHromazia{
+  width: 275px;
+  border-radius: 6px;
+  color: white;
+  background-color: #000000;
+  border: solid 0.5px white;
+  margin-bottom: 7px;
+
+}
+.contunium .bc:hover{
+  color: black;
+  background-color:   rgb(151, 149, 149);
+  transition: 0.2s ease-out;
+
+
+}
+.contunium .ac {
+ display: grid;
+ place-items: center;
+}
+.Do_you_have_account{
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.Do_you_have_account a{ margin-left: 5px;}
+.Do_you_have_account a{ margin-left: 5px; text-decoration: none; } 
+.Do_you_have_account a:hover{text-decoration: underline;} 
+
+.google-button{
+  margin-left: 13px;
+  margin-top: 7px;
+  padding: 3px;
+  padding-left: 9px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border-radius: 7px;
+  border: 1.0px solid rgb(164, 164, 164);}
+ 
+  
+.Google_logo{
+  width: 28px;
+  height: 28px;
+  margin-right: 15px;
+}
+.eye1, .eye2{
+  min-width: 7px;
+  min-height: 7px;
+}
+
+.input_wrapper{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle_button{
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 5px;
+  top:5px;
+}
+/* .restore_conteiner{
+  
+} */
+.restore_conteiner .choose_restore{
+  text-decoration: none;
+  font-size: 14px;
+}
+.restore_conteiner .choose_restore:hover{text-decoration: underline;}

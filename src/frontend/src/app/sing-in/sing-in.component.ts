@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { DaltonizmService } from '../daltonizm.service';
 
 @Component({
   selector: 'app-sing-in',
@@ -9,13 +10,26 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./sing-in.component.css']
 })
 export class SingINComponent implements OnInit {
-  email: string = '';
-  password: string = '';
+  
+  selectedClass: any ={};
+  passwordVisible: boolean = false;
+  // email: string = '';
+  // password: string = '';
+  Login_user: string ='';
+  Password_user: string ='';
   errorMessage: string | null = null;
   isLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private sharedService: SharedService) {
+  togglePasswordVisibility(){
+    this.passwordVisible = !this.passwordVisible;
+  }
+  constructor(private http: HttpClient, private router: Router,  private daltonizmService: DaltonizmService, private sharedService: SharedService) {
     // Підписка на зміну стану логіну
+
+    this,this.daltonizmService.selectedClass$.subscribe(selectedClass =>{
+      this.selectedClass = selectedClass;
+    });
+
     this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
       this.isLoggedIn = isLoggedIn;
     });
@@ -28,11 +42,19 @@ export class SingINComponent implements OnInit {
       this.sharedService.changeLoginState(true);
     }
   }
+
+
+  Login_with_Google() {
+    window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+  }
+
   // Login method
   login() {
     const loginData = {
-      email: this.email,
-      password: this.password
+      // email: this.email,
+      // password: this.password
+      login: this.Login_user,
+      password: this.Password_user
     };
 
     this.http.post('http://localhost:8080/api/users/login', loginData)
