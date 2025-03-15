@@ -302,7 +302,7 @@ button:hover{
   background-color: #ff8e04;
   color: white;
   border: none;
-  padding: 13px;
+  padding: 8px 15px  8px 15px;
   border-radius: 10px;
   cursor: pointer;
   display: none;
