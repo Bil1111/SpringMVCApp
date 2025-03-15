@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./donate.component.css']
 })
 export class DonateComponent implements OnInit {
+  notificationMessage: string | null = null;
+  isError: boolean = false;
 
   isScrollToTopVisible: boolean = false;
   @HostListener('window:scroll',[])
@@ -48,5 +50,24 @@ export class DonateComponent implements OnInit {
   // Метод для закриття модального вікна
   closeModal() {
     this.selectedShelter = null; // Скидаємо вибраний притулок
+  }
+
+showNotification(message: string, error: boolean) {
+  this.notificationMessage = message;
+  this.isError = error;
+
+  setTimeout(() => {
+    this.notificationMessage = null;
+  }, 2000); 
+}
+
+  copyToClipboard(text: string){
+    navigator.clipboard.writeText(text)
+      .then(() =>{
+        this.showNotification('Скопійовано!', false);
+      })
+      .catch(()=>{
+        this.showNotification('Помилка копіювання', true);
+      });
   }
 }

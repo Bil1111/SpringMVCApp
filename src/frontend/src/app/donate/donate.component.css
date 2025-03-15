@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3dba41; /* Зелений (успіх) */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification.error {
+  background: #f44336;
+}
+
 body {
   font-family: "e-ukr";
   background-color: #ffffff;
@@ -136,7 +152,9 @@ body {
   border-radius: 15px;
   font-size: large;
 } */
+.recvizit_info_in_modal{
 
+}
 .Prozoro h1{
   display:  flex;
   justify-content: center;
@@ -238,7 +256,7 @@ body {
   text-align: center;
 }
 
-.modal-content img {
+.modal-content .photo_f {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -257,7 +275,21 @@ body {
 }
 .modal-content .contact_info_in_modal { margin-bottom: 10px;}
 
- .modal-content .recvizit_info_in_modal {margin-bottom: 10px;}
+ .modal-content .recvizit_info_in_modal {margin-bottom: 10px; }
+
+  .button_copy{
+      border: none;
+      background-color: white;
+ } 
+
+ .copyimg{
+  width: 25px;  
+  height: 25px; 
+  margin-right: 5px;
+  vertical-align: middle; 
+  margin-bottom: 5px;
+ }  
+
 
 .close-button {
   cursor: pointer;

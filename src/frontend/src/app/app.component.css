@@ -398,9 +398,9 @@ nav ul li .Registr_pc:hover {
 }
 /* Загальний стиль для футера */
 footer {
-  font-family: 'e-ukr';
+  font-family: 'e-ukrR';
   font-size: smaller;
-  background-color:#dcdcdc;
+  background-color:#1F1F1F;
 
 }
 
@@ -409,12 +409,13 @@ footer {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content:space-evenly;
+  /* justify-content:space-evenly; */
+  gap: 50px;
   align-items: center;
   padding-top: 10px;
 }
 .info-section1{
-  margin-top: 25px;
+  margin-top: 20px;
 }
 .info-section1 ul,
 .info-section2 ul{
@@ -430,7 +431,7 @@ footer {
 .info-section1 a,
 .info-section2 a{
   text-decoration: none;
-  color: #000;
+  color: #EFEFEF;
 
 }
 .info-section1 a:hover,
@@ -441,17 +442,24 @@ footer {
 }
 
 .info-section2 p{
+
+font-family: 'e-ukrB';
   /* text-align: center; */
   margin-bottom: 5px;
   text-transform: uppercase;
+  color: #EFEFEF;
+
 
 }
 
+
 .credits-section {
-  text-align: center;
+  text-align: end;
   margin-top: 20px;
   font-size: 14px;
   padding-bottom: 10px;
+  position: relative;
+  right: 100px;
 }
 
 .logo-section{
@@ -469,6 +477,10 @@ footer {
   position: relative;
   left: 20px;
   top: 20px;
+}
+.project{
+  color: #EFEFEF;
+
 }
 
 @media (max-width: 630px) {
@@ -531,3 +543,27 @@ footer {
 
   }
 } */
+
+.fact_conteiner{
+  position: relative;
+  left: 330px;
+  width: 65%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.fact{
+  display: flex;
+  gap: 10px;
+}
+.fact .fact_text{ font-family: 'e-ukrB'; font-size: 16px;}
+.fact_button{
+  border: none;
+  background-color: white;
+}
+.fact_content{
+  font-family: 'e-ukrR';
+  color: #000000;
+  max-width: 90ch; /* Обмежує текст до 30 символів */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

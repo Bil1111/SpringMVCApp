@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
    ShowFooter: boolean = false;
    ShowHeader: boolean = true;
 
+   fact: string = '';
 
 
   
@@ -88,14 +89,20 @@ export class AppComponent implements OnInit {
       // Створення інфо-вікна для мітки
       const infoWindow = new google.maps.InfoWindow({
         content: `
-          <div  style="font-family: 'e-ukr' max-width: 300px; padding: 10px; margin: 0;border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);" >
-           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;font-weight: bold;text-decoration: none;  display: flex;  justify-content: center;
-             color: black; ">${point.name}</a>
-            <p style=" margin-top: 10px; font-size: 1.1rem">  <strong>Місто:</strong> ${point.city}</p>
-            <p style="font-size: 1.1rem" ><strong>Адреса:</strong> ${point.address}</p>
-            <p style="font-size: 1.1rem"><strong>Телефон:</strong> ${point.contactNumber}</p>
-            <p style="font-size: 1.1rem"><strong>Опис:</strong> ${point.description}</p>
-            <img src="${point.imageURL}" alt="${point.name}" style="width:100px; height:auto; object-fit: cover;  ">
+          <div  style="
+          max-width: 400px;
+          margin: 0px;
+          padding: 0px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            
+            <img src="${point.imageURL}" alt="${point.name}" style="width:100%; height:auto; object-fit: cover; border-radius: 5px; ">
+           <a id="shelter-link" href="/for-all-shelter?shelterName=${point.name}&shelterId=${point.id}" style="font-size: 2.3em;  text-decoration: none;  display: flex;  justify-content: start; font-family: 'e-ukrB'; color: black; ">${point.name}</a>
+            <p style=" margin-top: 10px; font-size: 1.1rem"  font-family: 'e-ukr'>  <strong>Місто:</strong> ${point.city}</p>
+            <p style="font-size: 1.1rem" font-family: 'e-ukr' ><strong>Адреса:</strong> ${point.address}</p>
+            <p style="font-size: 1.1rem"  font-family: 'e-ukr'><strong>Телефон:</strong> ${point.contactNumber}</p>
+            <p style="font-size: 1.1rem"  font-family: 'e-ukrB';><strong>Опис:</strong> ${point.description}</p>
+           
           </div>
         `,
       });
@@ -119,4 +126,11 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     this.sharedService.changeLoginState(false);
    }
+
+   getFact() {
+    this.http.get<{ fact: string }>('http://localhost:8080/api/fact').subscribe({
+      next: (data) => (this.fact = data.fact),
+      error: (err) => console.error('Помилка отримання факту:', err),
+    });
+  }
 }

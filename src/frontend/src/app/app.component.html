@@ -108,15 +108,23 @@
 <router-outlet></router-outlet>
 
 
+<div *ngIf="isHomePage" class="fact_conteiner">
+  <div  class="fact">
+    <p class="fact_text">Забавний факт!</p>
+    <button (click)="getFact()" class="fact_button"><img src="Group 56.svg" alt="оновити"></button>
+  </div>
+  <div class="fact_content">{{fact}} </div>
+</div>
+
+
 
 <div class="map-container" *ngIf="isHomePage">
-  <h1>Map Shelters</h1>
 
   <!-- <div class="findshelter">
     <input type="text" [(ngModel)]="searcshelter">  <button (click)="findshelter()">Пошук</button>
 </div> -->
 
-  <div id="map" style="width: 90%; height: 650px; border-radius: 17px;"></div>
+  <div id="map" style="width: 95%; height: 650px; border-radius: 17px;"></div>
 
 </div>
 
@@ -124,17 +132,19 @@
 <footer *ngIf="ShowFooter">
   <div class="footer-container">
     <div class="info-section1">
+     
       <ul>
+        <li><a routerLink="/" style="font-family: 'e-ukrB';">Find a Friend</a></li>
         <li><a routerLink="/find-f">Знайти друга</a></li>
         <li><a routerLink="/donate">Донат</a></li>
         <li><a routerLink="/about">Про нас</a></li>
         <li><a routerLink="/blog-and-news">Блог та новини</a></li>
       </ul>
     </div>
-    <div class="logo-section">
+    <!-- <div class="logo-section">
       <img class="imgfooter" src="/Logo.svg" alt="FF_LOGO" />
       <p>Find a Friend</p>
-    </div>
+    </div> -->
     <div class="info-section2">
       <p>Волонтерство</p>
         <ul>
