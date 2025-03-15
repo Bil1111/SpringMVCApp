@@ -16,7 +16,7 @@ public class EmailService {
 
     // Метод для надсилання листа з посиланням на скидання пароля
     public void sendPasswordResetEmail(String email, String resetToken) {
-        String resetLink = "http://localhost:4200/new-password2?token=" + resetToken;
+        String resetLink = "http://localhost:4200/new-password-email?token=" + resetToken;
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("learnixsapteam@gmail.com");

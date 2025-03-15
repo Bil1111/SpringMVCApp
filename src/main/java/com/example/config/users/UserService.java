@@ -162,7 +162,7 @@ public class UserService {
     }
 
 
-    public User registerOrUpdateUserFromGoogle(String name, String email, String token) {
+    public User registerOrUpdateUserFromGoogle(String name, String email, String token, HttpServletRequest request) {
         Optional<User> existingUser = Optional.ofNullable(userRepository.findByEmail(email));
 
         String[] nameParts = name.split(" ", 2);
@@ -179,6 +179,7 @@ public class UserService {
                 user.setLastName(lastName);
             }
             user.setAuthToken(token);
+            user.setLastIp(extractClientIp(request));
             userRepository.save(user);
             return user;
         } else {
@@ -188,6 +189,7 @@ public class UserService {
             newUser.setEmail(email);
             newUser.setLogin(email);
             newUser.setRole(Role.USER);
+            newUser.setLastIp(extractClientIp(request));
             userRepository.save(newUser);
             return newUser;
         }
@@ -266,7 +268,7 @@ public class UserService {
     }
 
     public String getCityByIp(String ip) {
-        String apiUrl = "https://ipinfo.io/" + ip + "/json?token=YOUR_API_TOKEN";
+        String apiUrl = "https://ipinfo.io/" + ip + "/json?token=6b7a27c68ac120";
         try {
             Map<String, Object> response = restTemplate.getForObject(apiUrl, Map.class);
             return response != null ? (String) response.get("city") : "Невідоме місто";

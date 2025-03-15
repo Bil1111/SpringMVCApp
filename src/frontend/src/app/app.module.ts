@@ -24,6 +24,7 @@ import { RestoreEmailComponent } from './restore-email/restore-email.component';
 import { NewPage2OnlytextComponent } from './new-page2-onlytext/new-page2-onlytext.component';
 import { NewPasswordPhoneComponent } from './new-password-phone/new-password-phone.component';
 import { NewPasswordEmailComponent } from './new-password-email/new-password-email.component';
+import {WebcamComponent} from './web-camera/web-camera.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { NewPasswordEmailComponent } from './new-password-email/new-password-ema
     NewPage2OnlytextComponent,
     NewPasswordPhoneComponent,
     NewPasswordEmailComponent,
+    WebcamComponent
 
   ],
   imports: [

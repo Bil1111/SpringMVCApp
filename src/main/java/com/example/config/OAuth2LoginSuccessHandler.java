@@ -30,13 +30,13 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String name = oAuth2User.getAttribute("name");
         String email = oAuth2User.getAttribute("email");
 
-        User user = userService.registerOrUpdateUserFromGoogle(name, email,"");
+        User user = userService.registerOrUpdateUserFromGoogle(name, email,"", request);
         // Генеруємо JWT
         String token = jwtTokenProvider.generateToken(user);
-        userService.registerOrUpdateUserFromGoogle(name, email, token);
+        userService.registerOrUpdateUserFromGoogle(name, email, token, request);
 
         // Робимо редирект на фронтенд з токеном
-        response.sendRedirect("http://localhost:4200/page8?token=" + token);
+        response.sendRedirect("http://localhost:4200/about?token=" + token);
     }
 }
 

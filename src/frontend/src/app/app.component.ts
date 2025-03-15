@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, inject, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
+import {LoginAndRegestService} from './login-and-regest.service';
 declare const google: any;
 
 interface MapPoint {
@@ -23,6 +24,7 @@ interface MapPoint {
 
 })
 export class AppComponent implements OnInit {
+  fact: string = '';
 
   title = 'FF';
   isHomePage: boolean = false;
@@ -33,10 +35,10 @@ export class AppComponent implements OnInit {
    ShowHeader: boolean = true;
 
 
-
-
-  constructor(private router: Router, private http: HttpClient,private sharedService: SharedService) {
+  constructor(private router: Router, private http: HttpClient,private route: ActivatedRoute,private loginAdnRegestService: LoginAndRegestService,private sharedService: SharedService) {
     this.router.events.subscribe(() => {
+      this.getFact();
+
       this.ShowFooter = this.router.url !== '/adopt' &&  this.router.url !== '/gifthouse' &&  this.router.url !== '/free-people'
       &&  this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin' &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
       &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
@@ -45,7 +47,8 @@ export class AppComponent implements OnInit {
       this.ShowHeader = this.router.url !== '/admin' &&  this.router.url !== '/admin/shelteradmin'
       &&  this.router.url !== '/admin/usersadmin' &&  this.router.url !== '/admin/volonteradmin'
       &&  this.router.url !== '/admin/adopradmin' &&  this.router.url !== '/admin/wardadmin'
-      &&  this.router.url !== '/admin/blogadmin'  &&  this.router.url !== '/admin/tabel-animals';
+      &&  this.router.url !== '/admin/blogadmin'  &&  this.router.url !== '/admin/tabel-animals'
+      && this.router.url !== '/admin/statistics';
 
     })
     this.sharedService.isLoggedIn$.subscribe(isLoggedIn =>{
@@ -54,14 +57,39 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const token = params['token'];
+
+      if (token) {
+        console.log("✅ Токен знайдено в URL:", token);
+        localStorage.setItem('token', token);
+        this.sharedService.changeLoginState(true);
+
+        // Видаляємо токен з URL і переходимо на головну
+        this.router.navigate(['/']);
+      } else {
+        // Якщо токен вже є в localStorage, просто змінюємо стан
+        const savedToken = localStorage.getItem('token');
+        if (savedToken) {
+          this.sharedService.changeLoginState(true);
+        }
+      }
+    });
+
+    // Перевіряємо, чи користувач на головній сторінці, і завантажуємо мапу
     this.router.events.subscribe(() => {
       this.isHomePage = this.router.url === '/';
       if (this.isHomePage) {
         this.loadMapPoints();
       }
     });
+  }
 
-
+  getFact() {
+    this.http.get<{ fact: string }>('http://localhost:8080/api/fact').subscribe({
+      next: (data) => (this.fact = data.fact),
+      error: (err) => console.error('Помилка отримання факту:', err),
+    });
   }
 
   loadMapPoints() {

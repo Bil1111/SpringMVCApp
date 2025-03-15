@@ -14,10 +14,11 @@ import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.compon
 import {accsecAdminGuard} from './accsec-admin.guard';
 import { ChooseRestoreComponent } from './choose-restore/choose-restore.component';
 import { RestorePhoneComponent } from './restore-phone/restore-phone.component';
-import { RestoreEmailComponent } from './restore-email/restore-email.component'; 
+import { RestoreEmailComponent } from './restore-email/restore-email.component';
 import { NewPage2OnlytextComponent } from './new-page2-onlytext/new-page2-onlytext.component';
 import { NewPasswordPhoneComponent } from './new-password-phone/new-password-phone.component';
 import { NewPasswordEmailComponent } from './new-password-email/new-password-email.component';
+import {WebcamComponent} from './web-camera/web-camera.component';
 
 
 const routes: Routes = [
@@ -38,9 +39,10 @@ const routes: Routes = [
   { path: 'new-page2-onlytext', component: NewPage2OnlytextComponent },
   { path: 'new-password-phone', component: NewPasswordPhoneComponent },
   { path: 'new-password-email', component: NewPasswordEmailComponent },
+  { path: 'web-camera', component: WebcamComponent },
 
   { path: 'admin', loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule),
-    // canActivate: [accsecAdminGuard] 
+    // canActivate: [accsecAdminGuard]
    },
 
   //{ path: '', redirectTo: '/about', pathMatch: 'full' }, // Опціонально, щоб перенаправити на нову сторінку за замовчуванням

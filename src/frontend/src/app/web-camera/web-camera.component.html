@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngIf="isYouTubeStream; else cameraStream">
+    <iframe [src]="safeUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <ng-template #cameraStream>
+    <video #videoElement autoplay></video>
+  </ng-template>
+
+  <div>
+    <button (click)="startCamera()" *ngIf="!isStreaming && !isYouTubeStream">Запустити камеру</button>
+    <button (click)="stopCamera()" *ngIf="isStreaming">Зупинити камеру</button>
+    <button (click)="startYouTubeStream()" *ngIf="!isYouTubeStream && !isStreaming">Перейти до YouTube</button>
+  </div>
+</div>

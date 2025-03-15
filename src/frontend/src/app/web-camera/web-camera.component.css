@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Центрує все по вертикалі */
+  background-color: #f4f4f4;
+}
+
+video, iframe {
+  width: 100%;
+  max-width: 640px; /* Встановлюємо максимальну ширину */
+  height: 480px; /* Встановлюємо фіксовану висоту */
+  border: 2px solid #333;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -20,6 +20,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("UPDATE User u SET u.lastIp = :ip WHERE u.id = :userId")
     void updateLastIp(@Param("userId") Long userId, @Param("ip") String ip);
 
-    @Query(value = "SELECT ip FROM users", nativeQuery = true)
+    @Query(value = "SELECT last_ip FROM users", nativeQuery = true)
     List<String> findAllByIp();
 }

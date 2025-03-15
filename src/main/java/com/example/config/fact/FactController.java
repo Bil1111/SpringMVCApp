@@ -20,8 +20,7 @@ public class FactController {
     @GetMapping
     public ResponseEntity<Map<String, String>> getFact() {
         Map<String, String> response = new HashMap<>();
-        response.put("fact", factService.getRandomFact());
+        response.put("fact", factService.getRandomAnimalFact());
         return ResponseEntity.ok(response);
     }
-
 }

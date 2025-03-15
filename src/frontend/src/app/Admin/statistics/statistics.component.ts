@@ -8,7 +8,7 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements AfterViewInit {
-  @ViewChild('chartCanvas') chartCanvas!: ElementRef;
+  @ViewChild('chartCanvas', { static: false }) chartCanvas!: ElementRef;
   chart!: Chart<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", number[], string>;
 
   constructor(private http: HttpClient) {}
@@ -22,6 +22,18 @@ export class StatisticsComponent implements AfterViewInit {
       const cities = Object.keys(data);
       const counts = Object.values(data);
 
+      // Якщо графік уже існує — знищуємо його перед створенням нового
+      if (this.chart) {
+        this.chart.destroy();
+      }
+
+      function getRandomColor(alpha = 0.5) {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      }
+
       this.chart = new Chart(this.chartCanvas.nativeElement, {
         type: 'bar',
         data: {
@@ -29,9 +41,11 @@ export class StatisticsComponent implements AfterViewInit {
           datasets: [{
             label: 'Кількість входів за містами',
             data: counts,
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
+            backgroundColor: counts.map(() => getRandomColor()),
+            borderColor: counts.map(() => getRandomColor(1)),
+            borderWidth: 1,
+            barPercentage: 0.5, // Розмір окремого стовпця (0 - дуже тонкий, 1 - максимально широкий)
+            categoryPercentage: 0.6 // Відстань між стовпцями
           }]
         },
         options: {
