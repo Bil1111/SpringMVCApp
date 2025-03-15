@@ -1,12 +1,15 @@
 package com.example.config.users;
 
-import com.example.config.requests.UserLoginRequest;
-import com.example.config.requests.UserRegistrationRequest;
 import com.example.config.token.JwtTokenProvider;
+import com.example.config.users.recoverPassword.PasswordResetRequest;
+import com.example.config.users.recoverPassword.ResetPasswordRequest;
+import com.example.config.users.recoverPassword.SMSRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +27,7 @@ public class UserController {
     private UserService userService;
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
+
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         Optional<User> customer = userService.getUserById(id);
@@ -48,47 +52,31 @@ public class UserController {
         userService.updateUserDetails(request, id);
         return new ResponseEntity<>("User updated successfully", HttpStatus.OK);
     }
+
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid UserRegistrationRequest request,
-                                               BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            // Якщо є помилки валідації, повертаємо їх
-            StringBuilder errorMessages = new StringBuilder();
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMessages.append(error.getField()).append(": ").append(error.getDefaultMessage()).append("\n");
-            }
-            return new ResponseEntity<>(errorMessages.toString(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Map<String, Object>> registerUser(@RequestBody @Valid UserRegistrationRequest request,
+                                                            BindingResult bindingResult) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
-            if (existingCustomer.isPresent()) {
-                return new ResponseEntity<>("User with this email already exists", HttpStatus.CONFLICT);
-            }
+            userService.registerValidation(bindingResult);
+            userService.checkingUserLoginEmail(request.getLogin(), request.getEmail());
             userService.registerUser(request);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            response.put("message", "User added successfully");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            response.put("message", e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
     }
 
     @PostMapping("/register/admin")
     public ResponseEntity<String> registerAdmin(@RequestBody @Valid UserRegistrationRequest request,
-                                               BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            // Якщо є помилки валідації, повертаємо їх
-            StringBuilder errorMessages = new StringBuilder();
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMessages.append(error.getField()).append(": ").append(error.getDefaultMessage()).append("\n");
-            }
-            return new ResponseEntity<>(errorMessages.toString(), HttpStatus.BAD_REQUEST);
-        }
+                                                BindingResult bindingResult) {
         try {
-            Optional<User> existingCustomer = userService.findByLogin(request.getEmail());
-            if (existingCustomer.isPresent()) {
-                return new ResponseEntity<>("User with this email already exists", HttpStatus.CONFLICT);
-            }
+            userService.registerValidation(bindingResult);
+            userService.checkingUserLoginEmail(request.getLogin(), request.getEmail());
             userService.registerAdmin(request);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>("Admin added successfully", HttpStatus.CREATED);
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
@@ -97,7 +85,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> loginUser(@RequestBody @Valid UserLoginRequest request,
-                                                         BindingResult bindingResult) {
+                                                         BindingResult bindingResult, HttpServletRequest httpRequest) {
         if (bindingResult.hasErrors()) {
             // Якщо є помилки валідації, повертаємо їх
             Map<String, String> errorMessages = new HashMap<>();
@@ -108,13 +96,15 @@ public class UserController {
         }
 
         try {
-            Optional<User> user = userService.findByEmail(request.getEmail());
-            if (user.isPresent() && userService.loginUser(request.getEmail(), request.getPassword())) {
+            Optional<User> user = userService.findByLogin(request.getLogin());
+            if (user.isPresent() && userService.loginUser(request.getLogin(), request.getPassword())) {
                 User loggedInUser = user.get();
                 // Генерація токену після успішного входу
                 String token = jwtTokenProvider.generateToken(loggedInUser); // Генерація токену
                 Map<String, String> response = new HashMap<>();
                 response.put("token", token); // Повертаємо токен у відповіді
+                //Беремо IP користувача
+                userService.updateLastIp(loggedInUser.getId(), httpRequest);
                 if (loggedInUser.getRole().equals(Role.ADMIN)) {
                     response.put("redirect", "/admin"); // Адмін
                 } else {
@@ -129,5 +119,69 @@ public class UserController {
             errorResponse.put("error", e.getMessage()); // Помилка у форматі Map
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/current-user")
+    public ResponseEntity<UserResponse> getCurrentUser(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(new UserResponse(user));
+    }
+
+    @PostMapping("/request-password-reset-email")
+    public ResponseEntity<Map<String, String>> requestPasswordResetEmail(@RequestBody PasswordResetRequest request) {
+        if (request.getEmail() == null || request.getEmail().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Email cannot be empty"));
+        }
+
+        try {
+            userService.requestPasswordResetEmail(request.getEmail());
+            return ResponseEntity.ok(Map.of("message", "Password reset link sent to your email"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Error: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/request-password-reset-phone")
+    public ResponseEntity<Map<String, String>> requestPasswordResetByPhone(@RequestBody SMSRequest smsRequest) {
+        try {
+            userService.requestPasswordResetByPhone(smsRequest.getPhoneNumber());
+            return ResponseEntity.ok(Map.of("message", "Password reset code sent via SMS"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+
+    @PostMapping("/reset-password-email")
+    public ResponseEntity<Map<String, String>> resetPasswordEmail(@RequestParam String token,
+                                                                  @RequestBody ResetPasswordRequest resetPasswordRequest) {
+        if (token == null || token.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Missing token"));
+        }
+
+        if (resetPasswordRequest.getNewPassword() == null || resetPasswordRequest.getNewPassword().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "New password cannot be empty"));
+        }
+
+        try {
+            userService.resetPassword(token, resetPasswordRequest.getNewPassword());
+            return ResponseEntity.ok(Map.of("message", "Password reset successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Error: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/reset-password-phone")
+    public ResponseEntity<Map<String, String>> resetPasswordPhone(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+        try {
+            userService.resetPassword(resetPasswordRequest.getToken(), resetPasswordRequest.getNewPassword());
+            return ResponseEntity.ok(Map.of("message", "Password reset successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Error: " + e.getMessage()));
+        }
+    }
+
+    @GetMapping("/cities")
+    public Map<String, Integer> getUserCities() {
+        return userService.getUserCities();
     }
 }

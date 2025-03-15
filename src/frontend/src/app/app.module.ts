@@ -16,7 +16,6 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ThignsComponent } from './thigns/thigns.component';
 import { ForAllShelterComponent } from './for-all-shelter/for-all-shelter.component';
-// import { AdminModule } from './Admin/admin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -35,8 +34,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GifthouseComponent,
     ThignsComponent,
     ForAllShelterComponent,
-
-
 
   ],
   imports: [
