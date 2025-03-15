@@ -549,7 +549,7 @@ font-family: 'e-ukrB';
   left: 330px;
   width: 65%;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .fact{
   display: flex;
@@ -563,7 +563,8 @@ font-family: 'e-ukrB';
 .fact_content{
   font-family: 'e-ukrR';
   color: #000000;
-  max-width: 90ch; /* Обмежує текст до 30 символів */
+  max-width: 100ch; /* Обмежує текст до 30 символів */
   word-wrap: break-word;
   overflow-wrap: break-word;
+  font-size: 15px;
 }
