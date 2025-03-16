@@ -1,1 +1,13 @@
+canvas {
+  max-width: 400px;
+  max-height: 400px;
+  margin: auto;
+}
 
+.pie-chart-container {
+  width: 300px; /* Фіксований розмір для кругових діаграм */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
