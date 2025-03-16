@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   Show_x: boolean = false;
   fact: string = '';
   chatDuckDuckgo: boolean = false;
+  chatDuckDuckgogo: boolean = false;
   userInput: string = '';
   responses: { query: string, answer: string }[] = [];
 
@@ -53,7 +54,7 @@ export class AppComponent implements OnInit {
         && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals'&&
         this.router.url !== '/admin/statistics';
 
-        this.chatDuckDuckgo = this.router.url !== '/admin' &&
+        this.chatDuckDuckgogo = this.router.url !== '/admin' &&
                     this.router.url !== '/admin/shelteradmin' &&
                     this.router.url !== '/admin/usersadmin' &&
                     this.router.url !== '/admin/volonteradmin' &&

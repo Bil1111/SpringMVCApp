@@ -11,3 +11,24 @@ canvas {
   justify-content: center;
   align-items: center;
 }
+
+.container_diagram{
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+}
+
+.container_diagram .diagram_list1 h3{
+   display: flex;
+   justify-content: center;
+   margin-bottom: 10px;
+   margin-top: 50px;
+ }
+
+ .container_diagram .diagram_list2 h3{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 50px; 
+ }
+ 
