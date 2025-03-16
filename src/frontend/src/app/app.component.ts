@@ -44,14 +44,27 @@ export class AppComponent implements OnInit {
       this.ShowFooter = this.router.url !== '/adopt' && this.router.url !== '/gifthouse' && this.router.url !== '/free-people'
         && this.router.url !== '/admin' && this.router.url !== '/admin/shelteradmin' && this.router.url !== '/admin/usersadmin' && this.router.url !== '/admin/volonteradmin'
         && this.router.url !== '/admin/adopradmin' && this.router.url !== '/admin/wardadmin'
-        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals';
+        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals'&& 
+        this.router.url !== '/admin/statistics';
 
       this.ShowHeader = this.router.url !== '/admin' && this.router.url !== '/admin/shelteradmin'
         && this.router.url !== '/admin/usersadmin' && this.router.url !== '/admin/volonteradmin'
         && this.router.url !== '/admin/adopradmin' && this.router.url !== '/admin/wardadmin'
-        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals';
+        && this.router.url !== '/admin/blogadmin' && this.router.url !== '/admin/tabel-animals'&& 
+        this.router.url !== '/admin/statistics';
 
-    })
+        this.chatDuckDuckgo = this.router.url !== '/admin' && 
+                    this.router.url !== '/admin/shelteradmin' && 
+                    this.router.url !== '/admin/usersadmin' && 
+                    this.router.url !== '/admin/volonteradmin' && 
+                    this.router.url !== '/admin/adopradmin' && 
+                    this.router.url !== '/admin/wardadmin' && 
+                    this.router.url !== '/admin/blogadmin' && 
+                    this.router.url !== '/admin/tabel-animals' && 
+                    this.router.url !== '/admin/statistics';
+
+    });
+
     this.sharedService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLogged = isLoggedIn;
     });
