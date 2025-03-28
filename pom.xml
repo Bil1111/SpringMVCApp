@@ -299,7 +299,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>com.example.config.DemoApplication</mainClass> <!-- вкажіть ваш основний клас -->
+                    <mainClass>com.example.config.DemoApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
