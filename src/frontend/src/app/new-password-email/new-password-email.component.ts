@@ -37,7 +37,7 @@ export class NewPasswordEmailComponent  implements OnInit{
       .subscribe({
         next: (response: any) => {
           console.log('Restore Successful', response);
-          this.router.navigate(['/login']); // Перенаправлення після успішного відновлення
+          this.router.navigate(['/']); // Перенаправлення після успішного відновлення
         },
         error: (error) => {
           this.errorMessage = 'Restore Failed';

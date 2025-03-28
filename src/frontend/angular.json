@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "../main/resources/static",
+            "outputPath": "dist/find-a-friend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
