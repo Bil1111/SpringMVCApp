@@ -1,5 +1,6 @@
 import {Component, OnInit, HostListener} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {SharedService} from '../shared.service';
 
 @Component({
   selector: 'app-find-f',
@@ -64,7 +65,7 @@ export class FindFComponent implements OnInit {
   Shelter: string = '';
   City: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private sharedService : SharedService) {
   }
 
   ngOnInit() {
@@ -138,6 +139,7 @@ export class FindFComponent implements OnInit {
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
     this.isModalOpen = true;
     this.isScrollToTopVisible = false; // Ховаємо кнопку
+    
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }
@@ -152,6 +154,7 @@ export class FindFComponent implements OnInit {
     this.ID_shelter = this.selectedAnimal.shelterId || 'empty';
     this.isModalOpen = true;
     this.isScrollToTopVisible = false; // Ховаємо кнопку
+
     // this.Shelter = this.selectedAnimal.shelterName || 'empty';
     // this.City = this.selectedAnimal.city || 'empty';
   }

@@ -73,3 +73,8 @@ label{
     display: block;
     line-height: 1.7rem;
 }
+@media (min-width: 320px) and (max-width: 640px) {
+    .drop_password{
+        font-size: 25px;
+    }
+}

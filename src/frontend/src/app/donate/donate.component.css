@@ -247,8 +247,11 @@ body {
   width: 500px;
   text-align: left;
   position: relative;
+  animation: slideIn 0.33s ease-out forwards;
 }
-
+@keyframes slideIn{
+  from{ opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0px);}
+}
 .modal-content h2 {
   font-size: 22px;
   color: #333;
@@ -341,4 +344,9 @@ body {
     font-size: 16px;
   }
 
+}
+@media (min-width: 320px) and (max-width: 768px) {
+  .scroll-to-top.show {
+    right: 10px !important;
+  }
 }

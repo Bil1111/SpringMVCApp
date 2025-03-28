@@ -482,20 +482,39 @@ font-family: 'e-ukrB';
 
 }
 
+@media (min-width: 320px) and (max-width: 426px) {
+  .show_chat{
+    bottom: 90px !important;
+    right: 10px !important;
+  }
+  .chat-container{
+    bottom: 25px !important;
+    right: 0px !important;
+    padding: 6px!important;
+  }
+  .input_user{
+    margin-left: 40px;
+  }
+  .input_UX{
+    display: flex !important;
+    gap: 20px !important;
+  }
+}
+
 @media (max-width: 630px) {
   .footer-container {
     flex-direction: column;
     text-align: center;
   }
-
+  /* .credits-section */
   .info-section,
-  .logo-section,
-  .credits-section {
+  .logo-section{
     margin-bottom: 2rem;
   }
   .imgfooter{
     left: 0px;
   }
+
 }
 
 @media (min-width: 992px) and (max-width: 1440px) {

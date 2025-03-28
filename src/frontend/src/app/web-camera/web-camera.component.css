@@ -6,19 +6,26 @@
   height: 100vh; /* Центрує все по вертикалі */
 }
  iframe{
-  width: 900px;
+  
+  max-width: 900px;
   height: 500px;
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-top: 20px;
  }
 video {
-  width: 900px;
+  width: 90%;
+  max-width: 900px;
   height: 500px;
   border: 2px solid #333;
   border-radius: 10px;
   margin-bottom: 20px;
-}
+  margin-top: 20px;
 
+}
+.button_claster{
+  text-align: center;
+}
 button {
   padding: 10px 15px;
   margin: 5px;
@@ -32,4 +39,13 @@ button {
 button:hover {
   background-color: #e28000;
   transition: 0.27s ease-in-out;
+}
+@media (min-width: 320px) and (max-width: 640px) {
+  .video{
+    width: 300px;
+  }
+ 
+}
+@media (min-width: 640px) and (max-width: 1024px) {
+ 
 }

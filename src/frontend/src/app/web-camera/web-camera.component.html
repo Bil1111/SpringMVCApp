@@ -7,7 +7,7 @@
     <video #videoElement autoplay></video>
   </ng-template>
 
-  <div style="font-family: 'e-ukr';">
+  <div style="font-family: 'e-ukr';" class="button_claster">
     <button (click)="startCamera()" *ngIf="!isStreaming && !isYouTubeStream">Запустити камеру</button>
     <button (click)="stopCamera()" *ngIf="isStreaming">Зупинити камеру</button>
     <button (click)="startYouTubeStream()" *ngIf="!isYouTubeStream && !isStreaming">Перейти до YouTube</button>

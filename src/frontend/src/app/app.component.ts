@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {SharedService} from './shared.service';
@@ -62,7 +62,16 @@ export class AppComponent implements OnInit {
                     this.router.url !== '/admin/wardadmin' &&
                     this.router.url !== '/admin/blogadmin' &&
                     this.router.url !== '/admin/tabel-animals' &&
-                    this.router.url !== '/admin/statistics';
+                    this.router.url !== '/admin/statistics' && 
+                    this.router.url !== '/regest' && 
+                    this.router.url !== '/sing-in' &&
+                    this.router.url !== '/choose-restore'&&
+                    this.router.url !== '/restore-phone'&&
+                    this.router.url !== '/restore-email'&&
+                    this.router.url !== '/new-page2-onlytext'&&
+                    this.router.url !== '/free-people'&&
+                    this.router.url !== '/adopt'&&
+                    this.router.url !== '/thigns';
 
     });
 

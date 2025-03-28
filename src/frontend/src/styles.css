@@ -41,3 +41,9 @@
     font-style: normal;
 }
 
+@media (min-width: 320px) and (max-width: 768px) {
+    .show_chat {
+      bottom: 90px;
+      right: 10px;
+    }
+  }

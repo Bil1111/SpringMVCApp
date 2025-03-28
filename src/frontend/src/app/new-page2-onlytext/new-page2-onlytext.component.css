@@ -33,7 +33,7 @@ img{
 }
 
 .drop_password{ font-size: 28px;}
-.restore{ font-size: 20px;}
+.restore{ font-size: 26px; text-align: center;}
 
 input{
     width: 275px;
@@ -52,4 +52,12 @@ label{
     font-size: 14px;
     display: block;
     line-height: 1.7rem;
+}
+@media (min-width: 320px) and (max-width: 640px) {
+    .drop_password{
+        font-size: 26px;
+    }
+    .restore{
+        font-size: 22px;
+    }
 }

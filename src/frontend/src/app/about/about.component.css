@@ -347,6 +347,7 @@ margin-top: 100px;
 .name{
   /* margin-top: 10px; */
   padding-right: 100px;
+
 }
 .icons {
   display: flex;
@@ -440,29 +441,65 @@ margin-top: 100px;
   display: block;
 }
 
-@media (min-width: 730px) {
-  .Dev{
-   flex-wrap: wrap;
-   display: flex;
-   /* justify-content: center; */
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* .find{
+    width: 100%;
+    margin-bottom: 0px; 
+    margin-left: 0px;
+    margin-top: 40px;
+   }
+   .find .fint_topic{font-size: 24.5px;}
 
-  }
-}
-@media (max-width: 730px) {
+   .textfind1{ margin-bottom: 100px;}
+
+  .textfind1, .textfind{ font-size: 21px;} */
+  
+  .step{margin-top: 40px;}
+  .Dev_conteiner{ margin-top: 40px;}
   .Dev{
-   display: grid;
-   place-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+   }
+  .devtitle h1{margin-top: 70px;}
+
+  .how {
+    margin-right: 0px;
+    margin-bottom: 40px;
   }
+   .how .How_topic {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 18px;
+    margin-right: 0px;
+  }
+  .howtext { font-size: 20px; margin-left: 0px;}
+  
+  .listtext{font-size: x-large;}
+  .steptext{width: 100%; text-align: center;}
+  .step h1{text-align:center;}
+  .alltext{margin: auto 15px;}
+  .job{ margin-left: 25px;font-size: 20px;}
+  .name{padding-right: 20px; font-size: 18px;}
+  .media_and_name{ margin-left: 25px; font-size: 16px;}
+  .line_conteiner_dev{ justify-content: start; }
+  .line_dev{ }
+  
+  
 }
 
-@media (max-width: 1024px) {
+
+/* @media (max-width: 1024px) {
    .find{width: 85%;}
    .howtext {width: 80%;}
    .listtext{font-size: x-large;}
    .Title1 p,.Title2 p ,.Title3 p{ width: 90%;}
-}
+} */
 
-@media (min-width: 320px) and (max-width: 426px) {
+/* @media (min-width: 320px) and (max-width: 426px) {
   .find{width: 100%; }
   .howtext {width: 100%;}
   .listtext{font-size: x-large;}
@@ -471,9 +508,81 @@ margin-top: 100px;
   .steptext{width: 100%; text-align: center;}
   .step h1{text-align:center;}
   .alltext{margin: auto 15px;}
+  .job{
+    margin-left: 25px;
+    font-size: 20px;
+  }
+  .name{
+    padding-right: 20px;
+    font-size: 18px;
+  }
+  .media_and_name{
+    margin-left: 25px;
+    font-size: 16px;
+  }
+  .Dev{
+    place-content: start;
+  }
+  .line_conteiner_dev{
+   
+    justify-content: start;
+   
 }
+} */
 
 
+@media (min-width: 320px) and (max-width: 728px) {
+  .Dev{
+    display: grid;
+    place-content: center;
+   }
+  .find{
+    width: 100%;
+    margin-bottom: 0px; 
+    margin-left: 0px;
+    margin-top: 40px;
+   }
+   .find .fint_topic{font-size: 24.5px;}
+
+   .textfind1{ margin-bottom: 100px;}
+
+  .textfind1, .textfind{ font-size: 21px;}
+  .step{margin-top: 40px;}
+  .Dev_conteiner{ margin-top: 40px;}
+  .devtitle h1{margin-top: 70px;}
+
+  .how {
+    margin-right: 0px;
+    margin-bottom: 40px;
+  }
+   .how .How_topic {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 18px;
+    margin-right: 0px;
+  }
+  .howtext { font-size: 20px; margin-left: 0px;}
+  
+  .listtext{font-size: x-large;}
+  .steptext{width: 100%; text-align: center;}
+  .step h1{text-align:center;}
+  .alltext{margin: auto 15px;}
+  .job{ margin-left: 25px;font-size: 20px;}
+  .name{padding-right: 20px; font-size: 18px;}
+  .media_and_name{ margin-left: 25px; font-size: 16px;}
+  
+  .line_conteiner_dev{
+    /* display: flex; */
+    justify-content: start; 
+}
+ /* .Title1 p,.Title2 p ,.Title3 p{ width: 100%; padding: 0px; text-align: center;}
+  .Title1 h1,.Title2 h1,.Title3 h1 { margin-bottom: 35px;} */
+  /* .Dev{
+    place-content: start;
+  } */
+}
 
 @media (max-width: 1050px) {
   .paw{
