@@ -36,7 +36,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         userService.registerOrUpdateUserFromGoogle(name, email, token, request);
 
         // Робимо редирект на фронтенд з токеном
-        response.sendRedirect("http://localhost:4200/about?token=" + token);
+        response.sendRedirect("https://find-a-friend-jet.vercel.app/about?token=" + token);
     }
 }
 
