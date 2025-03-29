@@ -32,10 +32,10 @@ export class VolontersComponent {
   }
 
   AllUsers() {
-    this.http.get<any[]>('http://localhost:8080/api/forms/volunteer/all').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/forms/volunteer/all').subscribe(
       data => {
         console.log("API Response:", data);  // Логуємо всю відповідь від API
-        this.Volonter = data.map(volonter => { 
+        this.Volonter = data.map(volonter => {
           // console.log(volonter.shelter);  // Логуємо кожного волонтера окремо
           return volonter;
         });
@@ -67,7 +67,7 @@ export class VolontersComponent {
   //  this.surname = volonter.lastName;
   //  this.shelter = volonter.shelter;
   // }
- 
+
 
   // SendEditedUser(){
 
@@ -79,15 +79,15 @@ export class VolontersComponent {
   //     lastName:  this.surname
   //   };
 
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+  //   this.http.put<any[]>(`https://springmvcapp.onrender.com/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
   //   {next: (response) => {
-  //     // console.log(response); 
+  //     // console.log(response);
   //     this.closeModal();
   //     this.AllUsers();
   //   },
   //   error: (error) => {
   //     console.error('Помилка при оновленні користувача', error);
-      
+
   //   }})
   // }
   CleanDeleteForm(){
@@ -106,7 +106,7 @@ export class VolontersComponent {
   }
   seandDelete(){
 
-    this.http.delete<any[]>(`http://localhost:8080/api/forms/volunteer/${this.Id}` , {responseType: ('text' as 'json')}).subscribe( 
+    this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/forms/volunteer/${this.Id}` , {responseType: ('text' as 'json')}).subscribe(
    {next: (response) => {
     console.log(response);
     this.closeModalDelete();
@@ -115,7 +115,7 @@ export class VolontersComponent {
   },
   error: (error) => {
     console.error('Помилка при видаленні', error);
-    
+
   }})
   }
 }

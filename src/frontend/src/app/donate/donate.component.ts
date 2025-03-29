@@ -29,7 +29,7 @@ export class DonateComponent implements OnInit {
 
   // Метод для отримання всіх притулків
   fetchShelters() {
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/shelters').subscribe(
       data => {
         console.log('Received shelters data:', data); // Логування отриманих даних
         this.shelters = data.map(shelter => {
@@ -58,7 +58,7 @@ showNotification(message: string, error: boolean) {
 
   setTimeout(() => {
     this.notificationMessage = null;
-  }, 2000); 
+  }, 2000);
 }
 
   copyToClipboard(text: string){

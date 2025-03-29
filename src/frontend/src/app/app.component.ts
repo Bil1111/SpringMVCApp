@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
   }
 
   loadMapPoints() {
-    this.http.get<MapPoint[]>('http://localhost:8080/api/mapPoints')
+    this.http.get<MapPoint[]>('https://springmvcapp.onrender.com/api/mapPoints')
       .subscribe(data => {
         this.mapPoints = data;
         this.initMap();
@@ -153,7 +153,7 @@ export class AppComponent implements OnInit {
   }
 
   getFact() {
-    this.http.get<{ fact: string }>('http://localhost:8080/api/fact').subscribe({
+    this.http.get<{ fact: string }>('https://springmvcapp.onrender.com/api/fact').subscribe({
       next: (data) => (this.fact = data.fact),
       error: (err) => console.error('Помилка отримання факту:', err),
     });
@@ -169,7 +169,7 @@ export class AppComponent implements OnInit {
   search() {
     console.log('Запит на пошук:', this.userInput);  // Лог для початку пошуку
     setTimeout(() =>{this.Show_x = true}, 500);
-    this.http.get<any>(`http://localhost:8080/duckduckgo/search?query=${this.userInput}`).subscribe(
+    this.http.get<any>(`https://springmvcapp.onrender.com/duckduckgo/search?query=${this.userInput}`).subscribe(
       response => {
         console.log('Отримана відповідь:', response);  // Лог для відповіді
         const answerText = response.answer;  // Витягти відповідь з об'єкта

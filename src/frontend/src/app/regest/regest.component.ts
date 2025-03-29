@@ -51,7 +51,7 @@ export class RegestComponent  implements OnInit {
       });
   }
   Register_with_Google() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+    window.location.href = 'https://springmvcapp.onrender.com/oauth2/authorization/google';
   }
 
 
@@ -79,7 +79,7 @@ export class RegestComponent  implements OnInit {
 
     this.loading = true; // Включаємо стан завантаження
 
-    this.http.post('http://localhost:8080/api/users/register', registrationData, httpOptions)
+    this.http.post('https://springmvcapp.onrender.com/api/users/register', registrationData, httpOptions)
       .subscribe({
         next: (response) => {
           this.loading = false; // Вимикаємо стан завантаження

@@ -38,7 +38,7 @@ export class UsersComponent {
   }
 
   AllUsers(){
-    this.http.get<any[]>('http://localhost:8080/api/users').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/users').subscribe(
       data =>{this.Users = data.map( user => {  return user;});}, error =>{   console.error('Error fetching shelters:', error);});
   }
 
@@ -69,7 +69,7 @@ export class UsersComponent {
   //     role: this.role
   //   };
 
-  //   this.http.put<any[]>(`http://localhost:8080/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
+  //   this.http.put<any[]>(`https://springmvcapp.onrender.com/api/users/update/${datauser.id}` , datauser , {responseType: 'text' as 'json'}).subscribe(
   //   {next: (response) => {
   //     console.log(response);
   //     this.closeModal();
@@ -109,7 +109,7 @@ export class UsersComponent {
 
       this.loading = true; // Включаємо стан завантаження
 
-      this.http.post('http://localhost:8080/api/users/register/admin', registrationData, httpOptions)
+      this.http.post('https://springmvcapp.onrender.com/api/users/register/admin', registrationData, httpOptions)
         .subscribe({
           next: (response) => {
             this.loading = false; // Вимикаємо стан завантаження
@@ -155,7 +155,7 @@ export class UsersComponent {
     }
     seandDelete(){
 
-      this.http.delete<any[]>(`http://localhost:8080/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
+      this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/users/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
      {next: (response) => {
       console.log(response);
       this.closeModalDelete();

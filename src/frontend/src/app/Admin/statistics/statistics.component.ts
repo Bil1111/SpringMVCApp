@@ -25,19 +25,19 @@ export class StatisticsComponent implements AfterViewInit {
   }
 
   loadChartData() {
-    this.http.get<{ [key: string]: number }>('http://localhost:8080/api/users/cities').subscribe(data => {
+    this.http.get<{ [key: string]: number }>('https://springmvcapp.onrender.com/api/users/cities').subscribe(data => {
       this.createChart(this.chartCanvas.nativeElement, 'bar', data, 'Кількість входів за містами', false);
     });
 
-    this.http.get<{ [key: string]: number }>('http://localhost:8080/api/statistics/adoptions').subscribe(data => {
+    this.http.get<{ [key: string]: number }>('https://springmvcapp.onrender.com/api/statistics/adoptions').subscribe(data => {
       this.createChart(this.adoptionCanvas.nativeElement, 'pie', data, 'Популярність тварин для усиновлення', true);
     });
 
-    this.http.get<{ [key: string]: number }>('http://localhost:8080/api/statistics/wards').subscribe(data => {
+    this.http.get<{ [key: string]: number }>('https://springmvcapp.onrender.com/api/statistics/wards').subscribe(data => {
       this.createChart(this.wardCanvas.nativeElement, 'pie', data, 'Популярність тварин для опіки', true);
     });
 
-    this.http.get<{ [key: string]: number }>('http://localhost:8080/api/statistics/volunteers').subscribe(data => {
+    this.http.get<{ [key: string]: number }>('https://springmvcapp.onrender.com/api/statistics/volunteers').subscribe(data => {
       this.createChart(this.volunteerCanvas.nativeElement, 'pie', data, 'Кількість волонтерів у притулках', true);
     });
   }

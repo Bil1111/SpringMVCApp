@@ -52,7 +52,7 @@ ngOnInit() {
 }
 
 SherlterForAdmin() {
-    this.http.get<any[]>('http://localhost:8080/api/shelters') // Отримуємо всі притулки
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/shelters') // Отримуємо всі притулки
       .subscribe(
         shelters => {
           shelters.forEach(shelter => {
@@ -113,7 +113,7 @@ SendEditedAnimal(){
   };
   console.log(EditAnimal);
 
-  this.http.put(`http://localhost:8080/api/animals/update/${this.id}`,EditAnimal, {responseType: ('text' )}).subscribe(
+  this.http.put(`https://springmvcapp.onrender.com/api/animals/update/${this.id}`,EditAnimal, {responseType: ('text' )}).subscribe(
    {next: (response) => {
     console.log("Сервер відповів:", response);
     this.closeModal();
@@ -156,7 +156,7 @@ confirmDelete(){
 }
 seandDelete(){
 
-  this.http.delete<any[]>(`http://localhost:8080/api/animals/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
+  this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/animals/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();

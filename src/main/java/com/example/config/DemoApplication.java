@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
-//http://localhost:8080/
+//https://springmvcapp.onrender.com/
 @SpringBootApplication
 @RestController
 public class DemoApplication {

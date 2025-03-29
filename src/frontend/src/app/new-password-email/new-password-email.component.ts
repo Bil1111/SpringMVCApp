@@ -33,7 +33,7 @@ export class NewPasswordEmailComponent  implements OnInit{
       newPassword: this.New_password
     };
 
-    this.http.post(`http://localhost:8080/api/users/reset-password-email?token=${token}`, new_pass)
+    this.http.post(`https://springmvcapp.onrender.com/api/users/reset-password-email?token=${token}`, new_pass)
       .subscribe({
         next: (response: any) => {
           console.log('Restore Successful', response);

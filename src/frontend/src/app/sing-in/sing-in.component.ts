@@ -10,7 +10,7 @@ import { DaltonizmService } from '../daltonizm.service';
   styleUrls: ['./sing-in.component.css']
 })
 export class SingINComponent implements OnInit {
-  
+
   selectedClass: any ={};
   passwordVisible: boolean = false;
   // email: string = '';
@@ -45,7 +45,7 @@ export class SingINComponent implements OnInit {
 
 
   Login_with_Google() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+    window.location.href = 'https://springmvcapp.onrender.com/oauth2/authorization/google';
   }
 
   // Login method
@@ -57,7 +57,7 @@ export class SingINComponent implements OnInit {
       password: this.Password_user
     };
 
-    this.http.post('http://localhost:8080/api/users/login', loginData)
+    this.http.post('https://springmvcapp.onrender.com/api/users/login', loginData)
       .subscribe({
         next: (response: any) => {
           console.log('Login successful', response);

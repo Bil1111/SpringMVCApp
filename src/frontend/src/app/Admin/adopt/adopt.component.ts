@@ -41,7 +41,7 @@ export class AdoptComponent {
   }
 
   AllUsers(){
-    this.http.get<any[]>('http://localhost:8080/api/forms/adopt/all').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/forms/adopt/all').subscribe(
       data =>{this.Volonter = data.map( volonter => {
         console.log(volonter);
         return volonter;});},
@@ -74,7 +74,7 @@ export class AdoptComponent {
    this.contactnumber = volonter.contactNumber;
    this.name = volonter.firstName;
    this.surname = volonter.lastName;
-  
+
   }
   closeModal(){this.selectedVolonter = null;}
 
@@ -88,15 +88,15 @@ export class AdoptComponent {
   //     lastName:  this.surname
   //   };
 
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+  //   this.http.put<any[]>(`https://springmvcapp.onrender.com/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
   //   {next: (response) => {
-  //     // console.log(response); 
+  //     // console.log(response);
   //     this.closeModal();
   //     this.AllUsers();
   //   },
   //   error: (error) => {
   //     console.error('Помилка при оновленні користувача', error);
-      
+
   //   }})
   // }
   CleanDeleteForm(){
@@ -115,7 +115,7 @@ export class AdoptComponent {
   }
   seandDelete(){
 
-    this.http.delete<any[]>(`http://localhost:8080/api/forms/adopt/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+    this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/forms/adopt/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
    {next: (response) => {
     console.log(response);
     this.closeModalDelete();
@@ -124,7 +124,7 @@ export class AdoptComponent {
   },
   error: (error) => {
     console.error('Помилка при видаленні', error);
-    
+
   }})
   }
 }

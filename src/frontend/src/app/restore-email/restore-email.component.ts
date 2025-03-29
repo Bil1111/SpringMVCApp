@@ -11,7 +11,7 @@ import { DaltonizmService } from '../daltonizm.service';
   styleUrl: './restore-email.component.css'
 })
 export class RestoreEmailComponent  implements OnInit{
-  
+
   Email_user: string = '';
   errorMessage: string | null = null;
 
@@ -30,7 +30,7 @@ export class RestoreEmailComponent  implements OnInit{
       email: this.Email_user
     };
 
-    this.http.post('http://localhost:8080/api/users/request-password-reset-email', Restore_emailData)
+    this.http.post('https://springmvcapp.onrender.com/api/users/request-password-reset-email', Restore_emailData)
       .subscribe({
         next: (response: any) => {
           console.log('Restore message Successful', response);

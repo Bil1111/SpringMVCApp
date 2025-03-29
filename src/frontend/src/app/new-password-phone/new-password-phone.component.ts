@@ -31,7 +31,7 @@ export class NewPasswordPhoneComponent implements OnInit {
       newPassword: this.New_password
     };
 
-    this.http.post(' http://localhost:8080/api/users/reset-password-phone', new_info)
+    this.http.post(' https://springmvcapp.onrender.com/api/users/reset-password-phone', new_info)
     .subscribe({
       next: (response: any) => {
         console.log('New password successful safe', response);

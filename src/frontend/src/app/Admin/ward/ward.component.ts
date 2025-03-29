@@ -39,7 +39,7 @@ export class WardComponent {
   }
 
   AllUsers(){
-    this.http.get<any[]>('http://localhost:8080/api/forms/ward/all').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/forms/ward/all').subscribe(
       data =>{this.Volonter = data.map( volonter => { return volonter;});},
        error =>{console.error('Error fetching shelters:', error);});
   }
@@ -69,7 +69,7 @@ export class WardComponent {
   //  this.contactnumber = volonter.contactNumber;
   //  this.name = volonter.firstName;
   //  this.surname = volonter.lastName;
-  
+
   // }
   closeModal(){this.selectedVolonter = null;}
 
@@ -83,15 +83,15 @@ export class WardComponent {
   //     lastName:  this.surname
   //   };
 
-  //   this.http.put<any[]>(`http://localhost:8080/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
+  //   this.http.put<any[]>(`https://springmvcapp.onrender.com/api/forms/volunteer` , DataVolonter , {responseType: 'text' as 'json'}).subscribe(
   //   {next: (response) => {
-  //     // console.log(response); 
+  //     // console.log(response);
   //     this.closeModal();
   //     this.AllUsers();
   //   },
   //   error: (error) => {
   //     console.error('Помилка при оновленні користувача', error);
-      
+
   //   }})
   // }
   CleanDeleteForm(){
@@ -110,7 +110,7 @@ export class WardComponent {
   }
   seandDelete(){
 
-    this.http.delete<any[]>(`http://localhost:8080/api/forms/ward/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe( 
+    this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/forms/ward/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
    {next: (response) => {
     console.log(response);
     this.closeModalDelete();
@@ -119,7 +119,7 @@ export class WardComponent {
   },
   error: (error) => {
     console.error('Помилка при видаленні', error);
-    
+
   }})
   }
 }

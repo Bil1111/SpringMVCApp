@@ -29,12 +29,12 @@ export class FreePeopleComponent implements OnInit {
 // 'Received shelters data:',
   // Метод для отримання всіх притулків
   fetchShelters() {
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/shelters').subscribe(
       data => {
         console.log( data); // Логування отриманих даних
         this.shelters = data.map(shelter => {
           // Генеруємо URL для зображення кожного притулку
-          // shelter.imageURL = `http://localhost:8080/images/shelters/${shelter.id}.png`;
+          // shelter.imageURL = `https://springmvcapp.onrender.com/images/shelters/${shelter.id}.png`;
           return shelter;
         });
       },
@@ -68,7 +68,7 @@ export class FreePeopleComponent implements OnInit {
     //
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/volunteer', volonterData).subscribe({
+    this.http.post('https://springmvcapp.onrender.com/api/forms/volunteer', volonterData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

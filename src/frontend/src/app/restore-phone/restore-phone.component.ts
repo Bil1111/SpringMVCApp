@@ -30,7 +30,7 @@ export class RestorePhoneComponent  implements OnInit {
       phoneNumber: this.Phone_user
     };
 
-    this.http.post('http://localhost:8080/api/users/request-password-reset-phone', Restore_phoneData)
+    this.http.post('https://springmvcapp.onrender.com/api/users/request-password-reset-phone', Restore_phoneData)
       .subscribe({
         next: (response: any) => {
           console.log('Restore Successful', response);

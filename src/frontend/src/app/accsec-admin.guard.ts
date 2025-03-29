@@ -14,7 +14,7 @@ export const accsecAdminGuard: CanActivateFn = (route, state) => {
     console.log('ВІДСУТНІЙ КЛЮЧ');
     return false;
   }
-  return http.get<any[]>('http://localhost:8080/api/users').pipe(
+  return http.get<any[]>('https://springmvcapp.onrender.com/api/users').pipe(
     map(users => {
       const user = users.find(u => u.authToken === Storedtoken && u.role === 'ADMIN');
       if (user) {

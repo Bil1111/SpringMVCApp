@@ -52,16 +52,16 @@ export class ForAllShelterComponent implements OnInit {
   fetchShelterData(page: number) {
     const startId = (page - 1) * this.itemsPerPage;
 
-    this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals/next/${startId}`)
+    this.http.get<any[]>(`https://springmvcapp.onrender.com/api/shelters/${this.shelter_ID}/animals/next/${startId}`)
       .subscribe(
         response => {
           this.animals = response || []; // Тепер відповідь — це список тварин
           this.filteredAnimals = [...this.animals];
-          
-          this.applyFilters(); 
+
+          this.applyFilters();
 
           // Запит на отримання всіх тварин для обчислення загальної кількості сторінок
-          this.http.get<any[]>(`http://localhost:8080/api/shelters/${this.shelter_ID}/animals`)
+          this.http.get<any[]>(`https://springmvcapp.onrender.com/api/shelters/${this.shelter_ID}/animals`)
             .subscribe(
               allAnimals => {
                 this.totalPages = Math.ceil(allAnimals.length / this.itemsPerPage); // Округлюємо до більшого
@@ -226,7 +226,7 @@ export class ForAllShelterComponent implements OnInit {
     //
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
+    this.http.post('https://springmvcapp.onrender.com/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -259,7 +259,7 @@ export class ForAllShelterComponent implements OnInit {
       animalSize: this.animalSize,
     };
 
-    this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
+    this.http.post('https://springmvcapp.onrender.com/api/forms/ward', WardData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

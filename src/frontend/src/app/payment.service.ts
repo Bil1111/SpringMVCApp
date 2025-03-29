@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PaymentService {
-  private apiUrl = 'http://localhost:8080/pay'; // Твій бекенд
+  private apiUrl = 'https://springmvcapp.onrender.com/pay'; // Твій бекенд
 
   constructor(private http: HttpClient) {}
 

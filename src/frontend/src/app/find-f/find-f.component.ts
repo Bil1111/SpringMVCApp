@@ -75,7 +75,7 @@ export class FindFComponent implements OnInit {
     const startId = (page - 1) * this.itemsPerPage;
 
     // Запит на отримання всіх притулків
-    this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+    this.http.get<any[]>('https://springmvcapp.onrender.com/api/shelters').subscribe(
       shelters => {
         const allAnimals: any[] = [];
 
@@ -203,7 +203,7 @@ export class FindFComponent implements OnInit {
     this.applyFilters(); // застосування нових фільтрів до колекції тварин.
     setTimeout(() => {}, 0);
   }
-  
+
 
   applyFilters() {
     this.filteredAnimals  = this.AllAnimals.filter(animal => {
@@ -274,7 +274,7 @@ export class FindFComponent implements OnInit {
     //
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.post('http://localhost:8080/api/forms/adopt', AdoptData).subscribe({
+    this.http.post('https://springmvcapp.onrender.com/api/forms/adopt', AdoptData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;
@@ -311,7 +311,7 @@ export class FindFComponent implements OnInit {
       // City: this.City,
     };
 
-    this.http.post('http://localhost:8080/api/forms/ward', WardData).subscribe({
+    this.http.post('https://springmvcapp.onrender.com/api/forms/ward', WardData).subscribe({
       next: (response) => {
         this.successMessage = 'Форма успішно відправлена!';
         this.errorMessage = null;

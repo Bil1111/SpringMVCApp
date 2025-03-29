@@ -69,7 +69,7 @@ ngOnInit() {
 }
 
 SherlterForAdmin() {
-  this.http.get<any[]>('http://localhost:8080/api/shelters').subscribe(
+  this.http.get<any[]>('https://springmvcapp.onrender.com/api/shelters').subscribe(
     data => {
       this.Shelters = data.map(shelter => {
 
@@ -155,7 +155,7 @@ SendEditedShelter(){
 
   };
   console.log(EditShelter);
-  this.http.put(`http://localhost:8080/api/shelters/update/${EditShelter.id}`,EditShelter, { responseType: 'text' }).subscribe(
+  this.http.put(`https://springmvcapp.onrender.com/api/shelters/update/${EditShelter.id}`,EditShelter, { responseType: 'text' }).subscribe(
    {next: (response) => {
     console.log('Притулок оновлено успішно', response);
     this.closeModal();
@@ -184,7 +184,7 @@ AddShelter(){
      paypal:  this.PayPal,
      iban:  this.IBAN
   };
-     this.http.post('http://localhost:8080/api/shelters/add', AddShelterData ,{responseType : ('text')}).subscribe(
+     this.http.post('https://springmvcapp.onrender.com/api/shelters/add', AddShelterData ,{responseType : ('text')}).subscribe(
       {next: (response) => {
       console.log(response);
       this.close();
@@ -225,11 +225,11 @@ confirmDelete(){
 }
 seandDelete(){
 
-  this.http.delete<any[]>(`http://localhost:8080/api/shelters/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
+  this.http.delete<any[]>(`https://springmvcapp.onrender.com/api/shelters/${this.id_for_delete}` , {responseType: ('text' as 'json')}).subscribe(
  {next: (response) => {
   console.log(response);
   this.closeModalDelete();
-  
+
   this.SherlterForAdmin();
 },
 error: (error) => {
@@ -257,7 +257,7 @@ Aniamls(){
 
   };
 
-  this.http.post<any[]>(`http://localhost:8080/api/animals/add`,SendDataAboutAnimals ,{responseType: ('text' as 'json')} ).subscribe(
+  this.http.post<any[]>(`https://springmvcapp.onrender.com/api/animals/add`,SendDataAboutAnimals ,{responseType: ('text' as 'json')} ).subscribe(
     {next: (response) => {
       console.log(response);
       this.closeFor_Add_Animals();
